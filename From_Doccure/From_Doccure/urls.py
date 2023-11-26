@@ -22,6 +22,9 @@ urlpatterns = [
     path('hm/',include('dashboard_from.urls')),
     path('symptom/',include('symptom.urls')),
     path('prediction/',include('prediction.urls')),
+    path('division/',include('division.urls')),
+    path('district/',include('district.urls')),
+    path('station/',include('station.urls')),
     path('',include('user.urls')),
     
 ]

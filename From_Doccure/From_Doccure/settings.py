@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'symptom',
     'prediction',
     'user',
+    'division',
+    'district',
+    'station',
     
 ]
 
