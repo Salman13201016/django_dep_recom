@@ -20,7 +20,7 @@ def Division_Name_store(request):
         division = request.POST.get('divi_name')
         if (len(division) < 4 ):
             messages.error(request, 'minimum 4')
-            return redirect('/home/')
+            return redirect('/division/')
         
         else:
             depar_model = models.Division_Name()
