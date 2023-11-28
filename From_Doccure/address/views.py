@@ -26,7 +26,7 @@ def address_store(request):
         hos_name = request.POST.get('hosp_name') 
         zip_code = request.POST.get('zip_code') 
         address = request.POST.get('address') 
-        image = request.POST.get('image') 
+        image = request.FILES.get('img') 
         description = request.POST.get('descrip') 
         
         addr_model = models.address_name()
@@ -42,7 +42,7 @@ def address_store(request):
               
         addr_model.save()
         messages.success(request, 'The Address name hase been inserted Successfully')
-        return redirect('/symptom/')
+        return redirect('/address/')
     except (IntegrityError) as e: 
         messages.error(request, 'The Address name hase been inserted Successfully')   
         return render(request,'form/Address/address.html')

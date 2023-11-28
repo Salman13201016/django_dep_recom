@@ -27,10 +27,11 @@
                 <div class="from_top">
                     <h2 class="signup_title">Login Account</h2>
                 </div>
-                <form action="{% url 'prediction_panel' %}" method="POST">
+                <form  method="POST">
                     {% csrf_token %}
                     <!-- <label for="mobile">Mobile</label> -->
-                    <input type="tel" name="mobile" id="monibe" placeholder="Enter Mobile Number">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" placeholder="Enter Your name">
                     <!-- <label for="pass">Password</label> -->
                     <input type="password" name="pass" id="pass" placeholder="Enter Your Password">
                     <button type="submit" class="signup_btn">Continue</button>

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'station',
     'hospital',
     'address',
+    'hospital_map',
     
 ]
 
