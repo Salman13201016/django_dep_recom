@@ -7,5 +7,4 @@ class user_registration(models.Model):
     passwoard = models.CharField(max_length=15)
     
     
-    
-    
+

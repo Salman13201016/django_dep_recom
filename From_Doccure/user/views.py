@@ -19,7 +19,7 @@ def login_panel(request):
             if user_login is not None :
                 login(request, user_login)
                 return redirect('home')
-            else:
+            else:               
                 return HttpResponse('User not vaild account')
         return render(request,'user/login.html')
     except (IntegrityError) as e: 
