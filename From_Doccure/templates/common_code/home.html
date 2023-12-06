@@ -184,14 +184,17 @@
 								<a href="{% url 'department' %}"><i class="fe fe-layout"></i> <span>Department</span></a>
 							</li>
 							<li class="{{active}}"> 
+								<a href="{% url 'dep_details' %}"><i class="fe fe-layout"></i> <span>Department Details</span></a>
+							</li>
+							<li class="{{active}}"> 
 								<a href="{% url 'di_panel' %}"><i class="fe fe-users"></i> <span>Disease</span></a>
 							</li>	
 							<li class="{{active}}"> 
 								<a href="{% url 'sym_panel' %}"><i class="fe fe-users"></i> <span>Symptom</span></a>
 							</li>	
-							{% comment %} <li class="{{active}}"> 
+							<li class="{{active}}"> 
 								<a href="{% url 'prediction_panel' %}"><i class="fe fe-users"></i> <span>Prediction</span></a>
-							</li> {% endcomment %}
+							</li>
 							<li class="menu-title"> 
 								<span>Main</span>
 							</li>
@@ -208,10 +211,13 @@
 								<span>Main</span>
 							</li>
 							<li class="{{active}}"> 
-								<a href="{% url 'hospital' %}"><i class="fe fe-users"></i> <span>Hospital</span></a>
+								<a href="{% url 'hospital' %}"><i class="fe fe-users"></i> <span>Hospital Category</span></a>
 							</li>
 							<li class="{{active}}"> 
-								<a href="{% url 'address' %}"><i class="fe fe-users"></i> <span>Address</span></a>
+								<a href="{% url 'address' %}"><i class="fe fe-users"></i> <span>Hospital</span></a>
+							</li>
+							<li class="{{active}}"> 
+								<a href="{% url 'hospital_depart' %}"><i class="fe fe-users"></i> <span>Hospital Department</span></a>
 							</li>
 							<li class="{{active}}"> 
 								<a href="{% url 'hospital_map' %}"><i class="fe fe-users"></i> <span>Hospital_map</span></a>

@@ -30,6 +30,8 @@ urlpatterns = [
     path('hospital/',include('hospital.urls')),
     path('address/',include('address.urls')),
     path('hospital_map/',include('hospital_map.urls')),
+    path('depart_details/',include('Department_Details.urls')),
+    path('hos_depart/',include('Hospital_Department.urls')),
     path('',include('user.urls')),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
