@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 temp_dir = os.path.join(BASE_DIR,'templates')
@@ -30,6 +31,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+AUTHENTICATION_BACKENDS = [
+    'auth_user.authentication.EmailAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    # Other authentication backends
+]
 
 # Application definition
 

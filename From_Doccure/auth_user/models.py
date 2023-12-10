@@ -12,3 +12,6 @@ class user_register(models.Model):
     v_key = models.CharField(max_length = 500,default=0)
     v_status = models.CharField(max_length = 500, default=0)
     
+    def verify_password(self, raw_password):
+        return check_password(raw_password, self.password)
+    
