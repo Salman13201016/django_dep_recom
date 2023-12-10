@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Signup</title>
 
     <!------------ Google font ------------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,30 +24,25 @@
                 <img src="{% static 'assets/img/logo1.png' %}">
                </div> 
                <div class="signup_form">
-               
-                <div class="from_top">
-                    <h2 class="signup_title">Login Account</h2>
-                </div>
-                {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}" role="alert">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <form action="#" method="POST">
-                    {% csrf_token %}
-                    <!-- <label for="mobile">Mobile</label> -->
+                <h2 class="signup_title">Create your account</h2>
+                <p class="signup_subtitle">Note that email and phone verification may be required for signup. Your email and number will only be used to verify your identity for security purposes.</p>
+                <form action="#" method='POST'>
+                        {% csrf_token %}
                     <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" placeholder="Enter Your name">
-                    <!-- <label for="pass">Password</label> -->
-                    <label for="name">Password</label>
+                    <input type="text" name="fname" id="name" placeholder="Enter Your name">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter Your Email">
+                    <label for="mobile">Mobile</label>
+                    <input type="tel" name="mobile" id="mobile" placeholder="Enter Your Mobile Number">
+                    <label for="mobile">NID/Pasport/Birth NO</label>
+                    <input type="tel" name="identy_no" id="identy_no" placeholder="Enter Your NID Number">
+                    <label for="pass">Password</label>
                     <input type="password" name="pass" id="pass" placeholder="Enter Your Password">
+                    <label for="con_pass">Confirm Password</label>
+                    <input type="password" name="con_pass" id="con_pass" placeholder="Enter Confirm Password">
                     <button type="submit" class="signup_btn">Continue</button>
                 </form>
-                <p class="under_from">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+                <p class="under_from">Already have an account? <a href="{% url 'aut_login' %}">Log in</a></p>
                </div>
                <div class="signup_foter">
                 <p class="signup_footer_content">
@@ -62,6 +57,7 @@
 
     <!------------- jquery cdn link for google ------------------>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <!---------------- Custom js ------------------>
     <script src="{% static 'assets/user/js/script.js' %}"></script>
 </body>

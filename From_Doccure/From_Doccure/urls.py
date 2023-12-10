@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hm/',include('dashboard_from.urls')),
     path('symptom/',include('symptom.urls')),
-    path('prediction/',include('prediction.urls')),
+    # path('prediction/',include('prediction.urls')),
     path('division/',include('division.urls')),
     path('district/',include('district.urls')),
     path('station/',include('station.urls')),
@@ -32,6 +32,7 @@ urlpatterns = [
     path('hospital_map/',include('hospital_map.urls')),
     path('depart_details/',include('Department_Details.urls')),
     path('hos_depart/',include('Hospital_Department.urls')),
-    path('',include('user.urls')),
+    path('',include('auth_user.urls')),
+    # path('user/',include('user.urls')),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
