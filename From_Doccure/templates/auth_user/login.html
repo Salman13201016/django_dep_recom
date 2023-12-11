@@ -17,7 +17,7 @@
     <!------------ Bootstrap css ------------>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
-    <!---------- custom css ------------->
+    <!---------- custom css ------------>
     <link rel="stylesheet" href="{% static '/assets/auth_user/css/style.css' %}">
 </head>
 <body>
@@ -37,7 +37,7 @@
                     <div class="auth_banner">
                         <img src="{% static '/assets/auth_user/img/authBanner/loginbanner.jpg' %}" alt="">
                         <div class="auth_btn_back">
-                            <a href="signup.html">Create an account</a>
+                            <a href="{% url 'aut_signup' %}">Create an account</a>
                         </div>
                     </div>
                 </div>
