@@ -113,3 +113,9 @@ def login_auth_panel(request):
 
 def auth_user_index(request):
     return render(request, 'auth_user/index.html')
+
+def Terms_of_use(request):
+    return render(request,'auth_user/terms.html')
+
+def Privacy_policy(request):
+    return render(request,'auth_user/privacy.html')

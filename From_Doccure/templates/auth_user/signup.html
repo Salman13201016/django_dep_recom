@@ -1,64 +1,125 @@
 <!DOCTYPE html>
-{% load static %} 
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+    <title>Digiverse - Signup</title>
 
-    <!------------ Google font ------------------->
+    <!-------- Fontwesome CDN --------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!------- Google Fonts -------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+    <!------------ Bootstrap css ------------>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
-    <!--------------- Custom CSS Link ----------------->
-    <link rel="stylesheet" href="{% static 'assets/user/css/style.css' %}">
+    <!---------- custom css ------------>
+    <link rel="stylesheet" href="{% static '/assets/auth_user/css/style.css' %}">
 </head>
 <body>
-    <!------------ Main body ------------------>
-    <section class="main">
+
+    <!-------- header section -------------->
+    <section class="header">
+        <div class="header_main">
+            <div class="header_logo">
+                <a href="index.html"><img src="{% static '/assets/auth_user/img/logo/DigiVerse-Logo.png' %}" alt=""></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-------- body section ---------->
+    <section class="login">
         <div class="container">
-            <div class="signup_main">
-               <div class="logo">
-                <img src="{% static 'assets/img/logo1.png' %}">
-               </div> 
-               <div class="signup_form">
-                <h2 class="signup_title">Create your account</h2>
-                <p class="signup_subtitle">Note that email and phone verification may be required for signup. Your email and number will only be used to verify your identity for security purposes.</p>
-                <form action="#" method='POST'>
-                        {% csrf_token %}
-                    <label for="name">Full Name</label>
-                    <input type="text" name="fname" id="name" placeholder="Enter Your name">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Enter Your Email">
-                    <label for="mobile">Mobile</label>
-                    <input type="tel" name="mobile" id="mobile" placeholder="Enter Your Mobile Number">
-                    <label for="mobile">NID/Pasport/Birth NO</label>
-                    <input type="tel" name="identy_no" id="identy_no" placeholder="Enter Your NID Number">
-                    <label for="pass">Password</label>
-                    <input type="password" name="pass" id="pass" placeholder="Enter Your Password">
-                    <label for="con_pass">Confirm Password</label>
-                    <input type="password" name="con_pass" id="con_pass" placeholder="Enter Confirm Password">
-                    <button type="submit" class="signup_btn">Continue</button>
-                </form>
-                <p class="under_from">Already have an account? <a href="{% url 'aut_login' %}">Log in</a></p>
-               </div>
-               <div class="signup_foter">
-                <p class="signup_footer_content">
-                    <a href="#">Terms of use</a>
-                    <a href="#">Privacy policy</a>
-                </p>
-               </div>
+            <div class="login_main signup">
+                <div class="backToSignup">
+                    <div class="auth_banner">
+                        <img src="{% static '/assets/auth_user/img/authBanner/signupbanner.jpg' %}" alt="">
+                        <div class="auth_btn_back">
+                            <a href="{% url 'aut_login' %}">If Registered</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="login_inner">
+                    <h2 class="auth_title">Create account</h2>
+                    <form action="#">
+                        <div class="form_inner_div">
+                            <label for="text"><i class="fa-solid fa-user"></i></label>
+                            <input type="text" name="text" id="text" placeholder="Enter Your Name" required>
+                        </div>                        
+                        <div class="form_inner_div">
+                            <label for="email"><i class="fa-solid fa-envelope"></i></label>
+                            <input type="email" name="email" id="email" placeholder="Enter Email" required>
+                        </div>                        
+                        <div class="form_inner_div">
+                            <label for="pass"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="pass" id="pass" placeholder="Enter Password" required>
+                        </div>
+                        <div class="form_inner_div">
+                            <label for="conPass"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="conPass" id="conPass" placeholder="Enter Confirm Password" required>
+                        </div>
+                        <div class="form_inner_div">
+                            
+                            <label for="mobile"><i class="fa-solid fa-mobile fa-fw"></i></label>
+                            <input type="tel" name="mobile" id="mobile" placeholder="Enter Mobile Number" required>
+                        </div>
+                        <div class="form_inner_div">
+                            <label for="nid"><i class="fa-solid fa-id-badge"></i></label>
+                            <input type="text" name="nid" id="nid" placeholder=" Enter NID/ Passport/ Birth Certificate Number" required>
+                        </div>
+                        <button type="submit" class="auth_btn">Sign up</button>
+                        <div class="or">
+                            <div class="ordiv"></div>
+                            <p class="or_text">OR</p>
+                            <div class="ordiv"></div>
+                        </div>
+                        <button type="submit" class="google_btn">
+                            <img src="{% static '/assets/auth_user/img/logo/google2-removebg-preview.png' %}" alt="">
+                            <p class="google_text">Continue with Google</p>
+                        </button>                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!----------- Footer section ---------------->
+    <section class="footer">
+        <div class="container">
+            <div class="footer_main">
+                <div class="copyrights">
+                    <p class="copy_content">All Rights Reserved By <a href="{% url 'aut_index' %}">Digiverse</a></p>
+                </div>
+                <div class="login_privacy">
+                    <a href="{% url 'term' %}">Terms of use</a>
+                    <a href="{% url 'privacy' %}">Privacy policy</a>
+                </div>
+                <div class="login_social">
+                    <div class="social">
+                        <div class="social_inner">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     
+   <!----------- Bootstrap js --------------->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!------------- jquery cdn link for google ------------------>
+    <!--------- Jquery cdn by Google ----------->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <!---------------- Custom js ------------------>
-    <script src="{% static 'assets/user/js/script.js' %}"></script>
+    <!------------ Custom js ------------>
+    <script src="{% static '/assets/auth_user/js/script.js' %}"></script>
 </body>
 </html>

@@ -9,9 +9,7 @@ class user_register(models.Model):
     identy_no = models.IntegerField(unique=True)
     mobile = models.IntegerField(unique=True)
     password = models.CharField(max_length=100)
-    v_key = models.CharField(max_length = 500,default=0)
+    v_key = models.CharField(max_length = 500,default=0, unique=True)
     v_status = models.CharField(max_length = 500, default=0)
     
-    def verify_password(self, raw_password):
-        return check_password(raw_password, self.password)
     
