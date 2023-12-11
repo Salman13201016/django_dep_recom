@@ -40,14 +40,14 @@
                 <form action="#" method="POST">
                     {% csrf_token %}
                     <!-- <label for="mobile">Mobile</label> -->
-                    <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" placeholder="Enter Your name">
+                    <label for="name">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter Your name">
                     <!-- <label for="pass">Password</label> -->
                     <label for="name">Password</label>
                     <input type="password" name="pass" id="pass" placeholder="Enter Your Password">
                     <button type="submit" class="signup_btn">Continue</button>
                 </form>
-                <p class="under_from">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+                <p class="under_from">Don't have an account? <a href="{% url 'aut_signup' %}">Sign up</a></p>
                </div>
                <div class="signup_foter">
                 <p class="signup_footer_content">
