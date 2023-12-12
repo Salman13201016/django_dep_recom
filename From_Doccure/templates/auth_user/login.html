@@ -43,7 +43,16 @@
                 </div>
                 <div class="login_inner">
                     <h2 class="auth_title">Log in</h2>
-                    <form action="#">
+                    {% if msg %}
+                        {% for i in msg %}
+                        
+                        <div class="alert alert-success">
+                            <h4 class="card-title">{{i}}</h4>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form action="#" method="POST" >
+                        {% csrf_token %}
                         <div class="form_inner_div">
                             <label for="email"><i class="fa-solid fa-envelope"></i></label>
                             <input type="email" name="email" id="email" placeholder="Enter Email">
