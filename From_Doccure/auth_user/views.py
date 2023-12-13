@@ -1,115 +1,196 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+
 import re
-from auth_user.models import user_register
-import time
-import hashlib
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import authenticate
-from django.conf import settings
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
-from django.core.mail import EmailMultiAlternatives
-# from django.contrib.auth import get_user_model
+from datetime import datetime, timedelta
+import random
+from . import models 
+from django.core.signing import Signer, BadSignature
+from django.core.mail import send_mail
+from django.utils.html import format_html
+from . models import user_register
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+# from django.contrib.auth import login
+
+
+def user_index_panel(request):
+
+    all_data = user_register.objects.all().order_by('pk')#this is acsending form align items #this is decending form order_py('-pk') 
+    # all_user_data = user_register.objects.select_related('id').all()  #making a relation between our user model and role model by using select_related                          
+    if (len(all_data)==0):
+        status = False
+    else:
+        status = True
+
+    # if (len(all_user_data)==0):
+    #     user_status = False
+    # else:
+    #     user_status = True
+    
+    msg = messages.get_messages(request)
+    data = {'all_data':all_data, 'status':status,'msg':msg}
+    return render(request, 'auth_user/signup.html', data)
 
 # Create your views here.
 def signup_auth_panel(request):
     if request.method == 'POST':
-        fname = request.POST.get('fname')
-        email = request.POST.get('email')
-        identy_no = request.POST.get('identy_no')
+        fname = request.POST.get('name')
+        email = request.POST.get('email').strip()
         mobile = request.POST.get('mobile')
-        password = request.POST.get('pass')
-        conPass = request.POST.get('con_pass')
-        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
-        valid = 0
-        if(re.fullmatch(regex,email)):
-            valid = 1
+        identy_no = request.POST.get('identy_no')
+        password = request.POST.get('password')
+        conpw = request.POST.get('conf_password')
+        e_pattern = r"^[a-zA-Z0-9_.]+@gmail\.com$"
+        o_pattern = r"^[a-zA-Z0-9_.]+@(outlook\.com|hotmail\.com|live\.com)$"
+        y_pattern = r"^[a-zA-Z0-9_.]+@yahoo\.com$"
+
+        if any(len(value) == 0 for value in [fname, email, mobile, identy_no, password, conpw]):
+        # if any(value is None or len(value) == 0 for value in [ fname, email, mobile, identy_no, password, conpw]):
+            messages.error(request, 'Empty field not accepted')
+
         else:
-            valid = 0
-        # if((len(fname)==0) or (len(email)==0) or (len(identy_no)==0) or (len(mobile)==0)or (len(password)==0) or (len(conPass)==0)):
-        if fname is None or email is None or identy_no is None or mobile is None or password is None or conPass is None:
-            return HttpResponse("Some fields are empty. Please fill in all required fields.")
-        elif len(fname) == 0 or len(email) == 0 or len(identy_no) == 0 or len(mobile) == 0 or len(password) == 0 or len(conPass) == 0:
-            return HttpResponse("The fields cannot be empty")
-            # return HttpResponse(" The field can not be empty")
-        elif(password!=conPass):
-            return HttpResponse("The password does not match")
-        elif(valid == 0):
-            return HttpResponse("The email is not valid")
-        else:
-            current_time = time.time()
-            v_key = fname+str(current_time)
-            result = hashlib.md5(v_key.encode())
-            result = result.hexdigest()
-            v_status = 0
-            data = user_register(fname=fname, email=email, identy_no=identy_no, mobile=mobile, password=password, v_key=v_key, v_status=v_status)
-            data.save()
-                        # decMessage = fernet.decrypt(encMessage).decode()
-            link = "http://127.0.0.1:8000/register/verification/"+str(result)
-            # print(link)
-            msg = "Click this verification link"
-            rendered = render_to_string('auth_user/reg_email.html', {'content': msg, 'link':link})
-            text_content = strip_tags(rendered)
-            email = EmailMultiAlternatives(
-                "User Registration",
-                text_content,
-                settings.EMAIL_HOST_USER,
-                [email],
-            )
-            email.attach_alternative(rendered,"text/html")
-            email.send()
-            return HttpResponse("success")
+            if(len(fname)<3):
+                messages.error(request, 'the field length must be minimum 3')
+                return redirect('/signup/')
+            elif(len(password)<8 ):
+                messages.error(request, 'the field length must be minimum 8')
+                return redirect('/signup/')
+            elif(not re.search(r'[A-Z]', password)):
+                messages.error(request, 'Password must contain at least one uppercase letter')
+                return redirect('/signup/')
+            elif(not re.search(r'\d', password)):
+                messages.error(request, 'Password must contain at least one digit')
+                return redirect('/signup/')
+            elif(not re.search(r'[!@#$%^&*()_+=\-{}[\]:;"\'|<,>.?/~]', password)):
+                messages.error(request, 'Password must contain at least one special character')
+                return redirect('/signup/')
+            elif(password!=conpw):
+                messages.error(request, 'Your password and confirm password does not match.')
+                return redirect('/signup/')
+            elif(models.user_register.objects.filter(mobile=mobile).exists()):
+                messages.info(request, 'Phone number already exists.')
+                return redirect('/signup/')
+            elif(len(mobile)!=11):
+                messages.error(request, 'Phone number must be 11 digit.')
+                return redirect('/signup/')
+            elif(models.user_register.objects.filter(identy_no=identy_no).exists()):
+                messages.info(request, 'ID number already exists.')
+                return redirect('/signup/')
+            elif not re.match(e_pattern, email) and not re.match(o_pattern, email) and not re.match(y_pattern, email):
+                messages.error(request, 'Email is not valid.')
+                return redirect('/signup/')
+
+            else:
+            #   user_obj = User()
+            #   user_obj = user_register.objects.get(id=id)
+              v_key, link = email_generator(fname)
+              
+              # this is create method it's fast
+              user_register.objects.create(fname=fname,email=email,mobile=mobile,identy_no=identy_no,password=password,v_key=v_key,v_status=0 )
+              send_mail(f"Hello Mr. {fname} Please confirm your Registration in Doc.com",link,'maniruzzaman.manir96@gmail.com',[email],html_message=link)
+               # this is save method 
+            user_model = user_register()
+            user_model.fname = fname
+            user_model.email = email
+            user_model.mobile = mobile
+            user_model.identy_no = identy_no
+            user_model.password = password
+            # user_obj.id = user_id
+            user_model.save()
+            
+            messages.success(request, 'User Registration succesfully!')
+            return redirect('/signup/')
     return render(request, 'auth_user/signup.html')
 
+def email_generator(fname):
+    current_time = datetime.now().strftime("%H:%M:%S")
+    h, m, s= map(int, current_time.split(':'))
+    time_sec = h*3600 + m*60 + s
+    time_sec = str(time_sec)
+
+    random_number = random.choices('123456790',k=4)
+    random_number = ''.join(random_number)
+    v_c = time_sec + random_number
+    
+    signer = Signer()
+    encrypted_value = signer.sign(v_c)
+    encrypted_value1 = signer.sign(v_c).split(":")[1]
+    decrypted_value = signer.unsign(encrypted_value)
+    
+
+    link = f"<p>Congratulations Mr {fname} ! For registering as a user in our doctor appointment system. To confirm the registration </p><a href='http://127.0.0.1:8000/email_verification/"+encrypted_value1+"' target='_blank'>please click this Activation link</a>"
+
+    formatted_link = format_html(link)
+    return encrypted_value1,formatted_link
 
 
-def verify(request, v_key):
-    print(v_key,"======")
-    try:
-        # v_key = v_key
-        record = user_register.objects.get(v_key=v_key)
-        print(record,"-------")
-        if record.v_status == 0 :  # Check if the status is not already verified
-            record.v_status = 1
-            record.save()
-            return HttpResponse("Verification status updated")
-        else:
-            return HttpResponse("Already Verified")
-    except user_register.DoesNotExist:
-        return HttpResponse("Invalid verification key")
 
+def email_verify(request,id):
+   
+    v_key = id
+    user = user_register.objects.get(v_key=v_key)
+    user.v_status = 1
+    user.save()
+    user_data = {"u_data": user}
 
-# class EmailAuthBackend:
-#     def authenticate(self, request, email=None, password=None):
-#         User = get_user_model()
-#         try:
-#             user = User.objects.get(email=email)
-#             if user.check_password(password):
-#                 return user
-#         except User.DoesNotExist:
-#             return None
+    return render(request, 'auth_user/welcome.html', user_data)
 
-#     def get_user(self, user_id):
-#         User = get_user_model()
-#         try:
-#             return User.objects.get(pk=user_id)
-#         except User.DoesNotExist:
-#             return None 
 
 def login_auth_panel(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['pass']
+        email = request.POST.get('email')
+        password = request.POST.get('pass')
         user = authenticate(request, email=email, password=password)
-        print(email)
-        print(password)
-        print(user)
+        
         if user:
-            return HttpResponse("Login Success")
+            # login(request, user)
+            return redirect('/hm/')
         else:
-            return HttpResponse("Login Failed")
-    
-    return render(request, 'auth_user/login.html')
+            # return HttpResponse("Login Failed")
+            messages.success(request, 'Email or Password Wrong')
+            return redirect('/login/')
+    else:
+        return render(request, 'auth_user/login.html')
+
 
 def auth_user_index(request):
     return render(request, 'auth_user/index.html')
+
+def Terms_of_use(request):
+    return render(request,'auth_user/terms.html')
+
+def Privacy_policy(request):
+    return render(request,'auth_user/privacy.html')
+
+
+
+
+
+
+
+
+
+# def otp_verify(request,id):
+#     if request.method == 'POST':
+#         v_key = request.POST.get('verify')
+#         user = user_register.objects.get(v_key=v_key)
+#         user.v_status = 1
+#         user.save()
+#         user_data = {"u_data":user}
+#         return render(request,'auth_user/congrats.html',user_data)
+
+# def pin_check(request):
+#     all_user_data = user_register.objects.select_related('id').all()
+#     user_data ={'user_data':all_user_data}
+#     return render(request,'auth_user/pin_check.html',user_data)
+
+# def otp_generator(fname):
+#     random_number = random.choices('123456790',k=4)
+#     random_number = ''.join(random_number)
+
+#     link = f"<p>Congratulations Mr {fname} ! For registering as a user in our doctor appointment system. To confirm the registration </p><a href='http://127.0.0.1:8000/pin_check/' target='_blank'>Activation Link</a> <br><br><h1>{random_number}</h1>"
+
+#     return random_number, link
