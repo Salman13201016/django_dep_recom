@@ -11,7 +11,10 @@ from django.contrib.auth.decorators import login_required
 # @login_required
 # @login_required(login_url="/aut_login/")
 def name_panel(request):
-    return render(request,'common_code/home.html')
+    if 'user_id' in request.session:
+        return render(request,'common_code/home.html')
+    else:
+        return redirect('aut_login')
 
 def dep_name_panel(request):
     data1 = Doctor_Depert_name.objects.values('id','name').distinct()

@@ -3,7 +3,7 @@ import re
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate
+# from django.contrib.auth import authenticate
 from datetime import datetime, timedelta
 import random
 from . import models 
@@ -92,14 +92,14 @@ def signup_auth_panel(request):
               user_register.objects.create(fname=fname,email=email,mobile=mobile,identy_no=identy_no,password=password,v_key=v_key,v_status=0 )
               send_mail(f"Hello Mr. {fname} Please confirm your Registration in Doc.com",link,'maniruzzaman.manir96@gmail.com',[email],html_message=link)
                # this is save method 
-            user_model = user_register()
-            user_model.fname = fname
-            user_model.email = email
-            user_model.mobile = mobile
-            user_model.identy_no = identy_no
-            user_model.password = password
-            # user_obj.id = user_id
-            user_model.save()
+            # user_model = user_register()
+            # user_model.fname = fname
+            # user_model.email = email
+            # user_model.mobile = mobile
+            # user_model.identy_no = identy_no
+            # user_model.password = password
+            # # user_obj.id = user_id
+            # user_model.save()
             
             messages.success(request, 'User Registration succesfully!')
             return redirect('/signup/')
@@ -140,20 +140,41 @@ def email_verify(request,id):
 
 
 def login_auth_panel(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('pass')
-        user = authenticate(request, email=email, password=password)
-        
-        if user:
-            # login(request, user)
-            return redirect('/hm/')
-        else:
-            # return HttpResponse("Login Failed")
-            messages.success(request, 'Email or Password Wrong')
-            return redirect('/login/')
+    if 'user_id' in request.session:
+        return redirect('/hm/')
     else:
-        return render(request, 'auth_user/login.html')
+        if request.method == 'POST':
+            email = request.POST.get('email')
+            password = request.POST.get('pass')
+            user = user_register.objects.get(email=email)
+            
+            if user.password==password:
+                request.session['user_id'] = user.id
+                request.session['user_email'] = user.email
+                request.session['user_fname'] = user.fname
+                return redirect('/hm/')
+
+            # user = authenticate(request, email=email, password=password)
+            
+            # if user:
+            #     # login(request, user)
+            #     return redirect('/hm/')
+            else:
+                # return HttpResponse("Login Failed")
+                messages.success(request, 'Email or Password Wrong')
+                return redirect('/login/')
+        else:
+            return render(request, 'auth_user/login.html')
+
+
+
+def logout_auth_panel(request):
+    # Check if user is logged in
+    if 'user_id' in request.session:
+        # Clear session data
+        request.session.flush()
+        # messages.success(request, 'You have been logged out successfully.')
+    return redirect('aut_index')
 
 
 def auth_user_index(request):
