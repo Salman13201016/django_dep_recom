@@ -13,7 +13,7 @@ from django.utils.html import format_html
 from . models import user_register
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.contrib.auth import login
+# from django.contrib.auth import login
 
 
 def user_index_panel(request):
@@ -146,7 +146,7 @@ def login_auth_panel(request):
         user = authenticate(request, email=email, password=password)
         
         if user:
-            login(request, user)
+            # login(request, user)
             return redirect('/hm/')
         else:
             # return HttpResponse("Login Failed")
