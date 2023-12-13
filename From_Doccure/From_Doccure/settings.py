@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     'Department_Details',
     'Hospital_Department',
     'auth_user',
-    
 ]
 
 MIDDLEWARE = [
