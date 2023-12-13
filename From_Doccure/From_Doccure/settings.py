@@ -149,6 +149,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/'media/'
 LOGIN_REDIRECT_URL = '/profile/'
+# LOGIN_URL = '/aut_login/'
 STATIC_ROOT = 'staticfiles'
 
 # Default primary key field type

@@ -5,8 +5,11 @@ from . models import Doctor_Depert_name
 from . models import Sub_Disease
 from django.contrib import messages
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+# @login_required
+# @login_required(login_url="/aut_login/")
 def name_panel(request):
     return render(request,'common_code/home.html')
 

@@ -6,10 +6,14 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from datetime import datetime, timedelta
 import random
+from . import models 
 from django.core.signing import Signer, BadSignature
 from django.core.mail import send_mail
 from django.utils.html import format_html
 from . models import user_register
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.contrib.auth import login
 
 
 def user_index_panel(request):
@@ -51,19 +55,32 @@ def signup_auth_panel(request):
             if(len(fname)<3):
                 messages.error(request, 'the field length must be minimum 3')
                 return redirect('/signup/')
-            elif(len(password)<3 ):
-                messages.error(request, 'the field length must be minimum 3')
+            elif(len(password)<8 ):
+                messages.error(request, 'the field length must be minimum 8')
+                return redirect('/signup/')
+            elif(not re.search(r'[A-Z]', password)):
+                messages.error(request, 'Password must contain at least one uppercase letter')
+                return redirect('/signup/')
+            elif(not re.search(r'\d', password)):
+                messages.error(request, 'Password must contain at least one digit')
+                return redirect('/signup/')
+            elif(not re.search(r'[!@#$%^&*()_+=\-{}[\]:;"\'|<,>.?/~]', password)):
+                messages.error(request, 'Password must contain at least one special character')
                 return redirect('/signup/')
             elif(password!=conpw):
-                messages.error(request, 'Your password and confirm password does not match')
+                messages.error(request, 'Your password and confirm password does not match.')
                 return redirect('/signup/')
-
+            elif(models.user_register.objects.filter(mobile=mobile).exists()):
+                messages.info(request, 'Phone number already exists.')
+                return redirect('/signup/')
             elif(len(mobile)!=11):
-                messages.error(request, 'Phone number must be 11 digit')
+                messages.error(request, 'Phone number must be 11 digit.')
                 return redirect('/signup/')
-
+            elif(models.user_register.objects.filter(identy_no=identy_no).exists()):
+                messages.info(request, 'ID number already exists.')
+                return redirect('/signup/')
             elif not re.match(e_pattern, email) and not re.match(o_pattern, email) and not re.match(y_pattern, email):
-                messages.error(request, 'Email is not valid')
+                messages.error(request, 'Email is not valid.')
                 return redirect('/signup/')
 
             else:
@@ -119,20 +136,22 @@ def email_verify(request,id):
     user.save()
     user_data = {"u_data": user}
 
-    return render(request, 'auth_user/congrats.html', user_data)
+    return render(request, 'auth_user/welcome.html', user_data)
+
 
 def login_auth_panel(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('pass')
         user = authenticate(request, email=email, password=password)
-        print(email)
-        print(password)
-        print(user)
+        
         if user:
-            return HttpResponse("Login Success")
+            login(request, user)
+            return redirect('/hm/')
         else:
-            return HttpResponse("Login Failed")
+            # return HttpResponse("Login Failed")
+            messages.success(request, 'Email or Password Wrong')
+            return redirect('/login/')
     else:
         return render(request, 'auth_user/login.html')
 

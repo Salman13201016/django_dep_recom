@@ -46,15 +46,15 @@
                 </div>
                 <div class="login_inner">
                     <h2 class="auth_title">Create account</h2>
-                    {% if msg %}
-                    {% for i in msg %}
+                    {% if messages %}
+                    {% for i in messages %}
                     
                     <div class="alert alert-success">
                         <h4 class="card-title">{{i}}</h4>
                     </div>
                     {% endfor %}
                     {% endif %}
-                    <form action="#" method="POST">
+                    <form action="{% url 'aut_signup' %}" method="POST">
                         {% csrf_token %}
                         <div class="form_inner_div">
                             <label for="text"><i class="fa-solid fa-user"></i></label>
