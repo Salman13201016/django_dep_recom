@@ -56,7 +56,7 @@ def signup_auth_panel(request):
                 messages.error(request, 'the field length must be minimum 3')
                 return redirect('/signup/')
             elif(len(password)<8 ):
-                messages.error(request, 'the field length must be minimum 8')
+                messages.error(request, 'Password length must be minimum 8')
                 return redirect('/signup/')
             elif(not re.search(r'[A-Z]', password)):
                 messages.error(request, 'Password must contain at least one uppercase letter')
@@ -136,7 +136,7 @@ def email_verify(request,id):
     user.save()
     user_data = {"u_data": user}
 
-    return render(request, 'auth_user/welcome.html', user_data)
+    return render(request, 'auth_user/congrats.html', user_data)
 
 
 def login_auth_panel(request):

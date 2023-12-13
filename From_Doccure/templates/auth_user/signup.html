@@ -49,7 +49,7 @@
                     {% if messages %}
                     {% for i in messages %}
                     
-                    <div class="alert alert-success">
+                    <div class="alert alert-{{ i.tags }}">
                         <h4 class="card-title">{{i}}</h4>
                     </div>
                     {% endfor %}
