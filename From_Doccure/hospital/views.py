@@ -7,10 +7,13 @@ from . import models
 # Create your views here.
 
 def Hospital_Name_panel(request):
-    hospital_data = hospital_categories.objects.values('hos_cat').distinct()
-    storage = messages.get_messages(request)
-    storage.used = True
-    context = {'hos_data':hospital_data,}
+    if 'user_id' in request.session:
+        hospital_data = hospital_categories.objects.values('hos_cat').distinct()
+        storage = messages.get_messages(request)
+        storage.used = True
+        context = {'hos_data':hospital_data,}
+    else:
+        return redirect('aut_login')
     return render(request,'form/Hospital/hospital.html', context)
 
 def Hospital_Name_store(request):

@@ -9,10 +9,13 @@ from django.db import IntegrityError
 # Create your views here.
 
 def hospital_depart_panel(request):
-    hospila_dep_data = hospital_department.objects.all() 
-    dept_fk_data = Doctor_Depert_name.objects.all()     
-    hosp_fk_data = hospital_categories.objects.all()     
-    context = {"hospital_det_data":hospila_dep_data,"dept_fk":dept_fk_data,"hosp_fk":hosp_fk_data}
+    if 'user_id' in request.session:
+        hospila_dep_data = hospital_department.objects.all() 
+        dept_fk_data = Doctor_Depert_name.objects.all()     
+        hosp_fk_data = hospital_categories.objects.all()     
+        context = {"hospital_det_data":hospila_dep_data,"dept_fk":dept_fk_data,"hosp_fk":hosp_fk_data}
+    else:
+        return redirect('aut_login')
     return render(request,'form/Hospital_Department/hospital_department.html',context)
 
 def hospital_depart_store(request): 

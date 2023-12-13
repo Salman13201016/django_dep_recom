@@ -17,12 +17,15 @@ def name_panel(request):
         return redirect('aut_login')
 
 def dep_name_panel(request):
-    data1 = Doctor_Depert_name.objects.values('id','name').distinct()
-    storage = messages.get_messages(request)
-    storage.used = True
-    context = {'depart_data':data1,}
+    if 'user_id' in request.session:
+        data1 = Doctor_Depert_name.objects.values('id','name').distinct()
+        storage = messages.get_messages(request)
+        storage.used = True
+        context = {'depart_data':data1,}
+    else:
+        return redirect('aut_login')
     return render(request,'form/Department/form-basic-inputs.html', context)
-
+    
 def department_name_store(request):
     
     try:
@@ -73,17 +76,14 @@ def delete(request, id):
 #Disease start
  
 def disease_panel(request):
-    data2 = Doctor_Depert_name.objects.all()   
-    context = {"disease_data":data2}
+    if 'user_id' in request.session:
+        data2 = Doctor_Depert_name.objects.all()   
+        context = {"disease_data":data2}
+    else:
+        return redirect('aut_login')
     return render(request,'form/Disease/disease.html',context)
 
 def disease_sub_store(request):   
-    # name = request.POST.get('disease_name')
-    # dep_id = request.POST.get('dep_id')
-    # sub_model = models.Sub_Disease()
-    # sub_model.name = name
-    # sub_model.dep_id_id = dep_id
-    # sub_model.save()
     try:
         name = request.POST.get('disease_name')
         if (len(name) < 4 ):

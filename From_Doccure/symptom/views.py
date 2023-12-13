@@ -7,9 +7,12 @@ from django.db import IntegrityError
 # Create your views here.
 
 def symptom_panel(request):
-    data_dep = Doctor_Depert_name.objects.all()   
-    data_disea = Sub_Disease.objects.all()   
-    context = {"disease_data":data_disea, 'depert_dep':data_dep}
+    if 'user_id' in request.session:
+        data_dep = Doctor_Depert_name.objects.all()   
+        data_disea = Sub_Disease.objects.all()   
+        context = {"disease_data":data_disea, 'depert_dep':data_dep}
+    else:
+        return redirect('aut_login')
     return render(request,'form/Symptom/symptom.html',context)
 
 def symptom_store(request): 

@@ -143,6 +143,7 @@ def login_auth_panel(request):
     if 'user_id' in request.session:
         return redirect('/hm/')
     else:
+        
         if request.method == 'POST':
             email = request.POST.get('email')
             password = request.POST.get('pass')
