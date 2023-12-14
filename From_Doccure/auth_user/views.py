@@ -36,6 +36,8 @@ def user_index_panel(request):
 
 # Create your views here.
 def signup_auth_panel(request):
+    if 'user_id' in request.session:
+        return redirect('/hm/')
     if request.method == 'POST':
         fname = request.POST.get('name')
         email = request.POST.get('email').strip()
@@ -179,13 +181,17 @@ def logout_auth_panel(request):
 
 
 def auth_user_index(request):
+    if 'user_id' in request.session:
+        return redirect('/hm/')
     return render(request, 'auth_user/index.html')
 
 def Terms_of_use(request):
     return render(request,'auth_user/terms.html')
+    
 
 def Privacy_policy(request):
     return render(request,'auth_user/privacy.html')
+   
 
 
 
