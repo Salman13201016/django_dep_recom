@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     'hospital_map',
     'Department_Details',
     'Hospital_Department',
+    'social_django',
     'auth_user',
     'allauth',
     'allauth.account',
@@ -99,8 +100,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+<<<<<<< HEAD
     
     'allauth.account.middleware.AccountMiddleware',
+=======
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+>>>>>>> 08272c03fa7d6320c02c92f74e0433ee61d65dc5
 ]
 
 ROOT_URLCONF = 'From_Doccure.urls'
@@ -116,6 +121,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
             ],
         },
     },
@@ -196,3 +202,18 @@ EMAIL_HOST_PASSWORD = 'tobfixvfmrlpchzu' # qsxptvezrvvbgfof
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',  # Google authentication backend
+    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication backend
+    # Add other authentication backends as needed
+]
+
+LOGIN_REDIRECT_URL = 'home'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '229553171688-v842vpaunkrkch4ala37q5fep5errq5c.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_PIPELINE = (
+    # ... other pipeline steps ...
+    'dashboard_from.pipeline.capture_social_auth_data',  # Add this line
+    # ... other pipeline steps ...
+)

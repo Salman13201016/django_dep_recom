@@ -6,12 +6,25 @@ from . models import Sub_Disease
 from django.contrib import messages
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
+from django.dispatch import receiver
+# from social_django.signals import social_auth_registered
+
+
+
+# The social_auth_registered signal handler remains unchanged
+# @receiver(social_auth_registered)
+
 # Create your views here.
 
 # @login_required
 # @login_required(login_url="/aut_login/")
+@login_required
 def name_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    print(google_data)
+    # request.session['user_gid'] = google_data.uid
+    # request.session['user_gemail'] = google_data.email
+    if google_data:
         return render(request,'common_code/home.html')
     else:
         return redirect('aut_login')
@@ -22,9 +35,10 @@ def dep_name_panel(request):
         storage = messages.get_messages(request)
         storage.used = True
         context = {'depart_data':data1,}
+        return render(request,'form/Department/form-basic-inputs.html', context)
     else:
         return redirect('aut_login')
-    return render(request,'form/Department/form-basic-inputs.html', context)
+    
     
 def department_name_store(request):
     

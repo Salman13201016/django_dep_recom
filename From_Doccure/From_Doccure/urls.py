@@ -21,7 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hm/',include('dashboard_from.urls')),
+    path('hm/',include('dashboard_from.urls'),name='home'),
     path('symptom/',include('symptom.urls')),
     # path('prediction/',include('prediction.urls')),
     path('division/',include('division.urls')),
@@ -33,6 +33,7 @@ urlpatterns = [
     path('depart_details/',include('Department_Details.urls')),
     path('hos_depart/',include('Hospital_Department.urls')),
     path('',include('auth_user.urls')),
+    path('social-auth/',include('social_django.urls',namespace='social')),
     # path('user/',include('user.urls')),
     path('accounts/', include('allauth.urls')),
     
