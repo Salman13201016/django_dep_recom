@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load socialaccount %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -54,7 +55,7 @@
                     </div>
                     {% endfor %}
                     {% endif %}
-                    <form action="{% url 'aut_signup' %}" method="POST">
+                    <form action="" method="POST">
                         {% csrf_token %}
                         <div class="form_inner_div">
                             <label for="text"><i class="fa-solid fa-user"></i></label>
@@ -87,10 +88,17 @@
                             <p class="or_text">OR</p>
                             <div class="ordiv"></div>
                         </div>
-                        <button type="submit" class="google_btn">
+                        {% comment %} {% if user.is_authenticated %}
+                        <p>Welcome, You are logged in as {{ user.username }}</p>
+                        {% else %}
+                        <a href="{%  google_provider'home_socail' %}">Login With Google</a>
+                        {% endif %} {% endcomment %}
+                        {% comment %} <a href="{% url 'socialaccount_signup' %}" class="google_btn">
                             <img src="{% static '/assets/auth_user/img/logo/google2-removebg-preview.png' %}" alt="">
                             <p class="google_text">Continue with Google</p>
-                        </button>                        
+                        </a> {% endcomment %}
+                        
+                                             
                     </form>
                 </div>
             </div>

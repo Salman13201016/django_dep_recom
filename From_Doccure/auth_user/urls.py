@@ -1,7 +1,11 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views as a_user
 from django.contrib.auth import views as auth_views
+from django.views.generic import TemplateView
+
+
+
 
 
 
@@ -12,8 +16,14 @@ urlpatterns = [
     path('login/', a_user.login_auth_panel,name='aut_login'),
     path('logout/', a_user.logout_auth_panel,name='auth_logout'),
     path('signup/', a_user.signup_auth_panel,name='aut_signup'),
+    # path('home_socail/', a_user.home_socail,name='home_socail'),
     path('signup_stor/', a_user.user_index_panel,name='signup_stor'),
     path("email_verification/<str:id>", a_user.email_verify,name='email_verify'),
+    
+    
+    
+    
+    
     
     
     # path('accounts/login/',auth_views.LoginView.as_view(template_name='auth_user/login.html', authentication_form=LoginForm) , name='aut_login'),

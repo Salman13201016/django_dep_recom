@@ -34,5 +34,6 @@ urlpatterns = [
     path('hos_depart/',include('Hospital_Department.urls')),
     path('',include('auth_user.urls')),
     # path('user/',include('user.urls')),
+    path('accounts/', include('allauth.urls')),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -3,7 +3,6 @@ import re
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
-# from django.contrib.auth import authenticate
 from datetime import datetime, timedelta
 import random
 from . import models 
@@ -11,9 +10,29 @@ from django.core.signing import Signer, BadSignature
 from django.core.mail import send_mail
 from django.utils.html import format_html
 from . models import user_register
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-# from django.contrib.auth import login
+
+
+# from allauth.socialaccount.models import SocialAccount
+# from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+
+
+
+# def home_socail(request):
+#     try:
+#         google_provider = SocialAccount.objects.get(provider='google')
+#     except MultipleObjectsReturned:
+#         print("Multiple 'google' providers found:")
+#         for provider in SocialAccount.objects.filter(provider='google'):
+#             print(provider.client_id)
+#         raise
+#     except ObjectDoesNotExist:
+#         print("No 'google' provider found.")
+#         raise
+
+#     return render(request, 'auth_user/signup.html', {'google_provider': google_provider})
+
+
+
 
 
 def user_index_panel(request):
@@ -32,7 +51,7 @@ def user_index_panel(request):
     
     msg = messages.get_messages(request)
     data = {'all_data':all_data, 'status':status,'msg':msg}
-    return render(request, 'auth_user/signup.html', data)
+    return render(request, 'update_design/signup.html', data)
 
 # Create your views here.
 def signup_auth_panel(request):
@@ -105,7 +124,7 @@ def signup_auth_panel(request):
             
             messages.success(request, 'User Registration succesfully!')
             return redirect('/signup/')
-    return render(request, 'auth_user/signup.html')
+    return render(request, 'update_design/signup.html')
 
 def email_generator(fname):
     current_time = datetime.now().strftime("%H:%M:%S")
@@ -138,7 +157,7 @@ def email_verify(request,id):
     user.save()
     user_data = {"u_data": user}
 
-    return render(request, 'auth_user/congrats.html', user_data)
+    return render(request, 'update_design/welcome.html', user_data)
 
 
 def login_auth_panel(request):
@@ -167,7 +186,7 @@ def login_auth_panel(request):
                 messages.success(request, 'Email or Password Wrong')
                 return redirect('/login/')
         else:
-            return render(request, 'auth_user/login.html')
+            return render(request, 'update_design/login.html')
 
 
 
@@ -183,14 +202,16 @@ def logout_auth_panel(request):
 def auth_user_index(request):
     if 'user_id' in request.session:
         return redirect('/hm/')
-    return render(request, 'auth_user/index.html')
+    return render(request, 'update_design/index.html')
 
 def Terms_of_use(request):
-    return render(request,'auth_user/terms.html')
+    return render(request,'update_design/terms.html')
     
 
 def Privacy_policy(request):
-    return render(request,'auth_user/privacy.html')
+    return render(request,'update_design/privacy.html')
+
+
    
 
 
