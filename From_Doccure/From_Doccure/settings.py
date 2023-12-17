@@ -31,17 +31,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         'SCOPE': [
-#             'profile',
-#             'email',
-#         ],
-#         'AUTH_PARAMS': {
-#             'access_type': 'online',
-#         }
-#     }
-# }
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 # {"web":{"client_id":"574229960386-3pcbtoip2rro0tpgc3v9e7i369tc96qn.apps.googleusercontent.com","project_id":"organic-edge-408114","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"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","redirect_uris":["http://127.0.0.1:8000/"],"javascript_origins":["http://127.0.0.1:8000"]}}
 
@@ -49,8 +49,8 @@ AUTHENTICATION_BACKENDS = [
     'auth_user.authentication.EmailAuthBackend',
     'django.contrib.auth.backends.ModelBackend',
     
-    # 'allauth.account.auth_backends.AuthenticationBackend'
-    # 'social_core.backends.google.GooleOAuth2'
+    'allauth.account.auth_backends.AuthenticationBackend'
+    'social_core.backends.google.GooleOAuth2'
     # Other authentication backends
 ]
 
@@ -185,8 +185,8 @@ LOGIN_REDIRECT_URL = '/profile/'
 STATIC_ROOT = 'staticfiles'
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
