@@ -144,6 +144,12 @@ def email_verify(request,id):
 def login_auth_panel(request):
     if 'user_id' in request.session:
         return redirect('/hm/')
+    google_data = request.session.get('social_auth_google-oauth2')
+    print(google_data)
+    # request.session['user_gid'] = google_data.uid
+    # request.session['user_gemail'] = google_data.email
+    if google_data:
+        return redirect('/hm/')
     else:
         
         if request.method == 'POST':
@@ -177,6 +183,8 @@ def logout_auth_panel(request):
         # Clear session data
         request.session.flush()
         # messages.success(request, 'You have been logged out successfully.')
+    if 'social_auth_google-oauth2' in request.session:
+        del request.session['social_auth_google-oauth2']
     return redirect('aut_index')
 
 
