@@ -57,6 +57,7 @@
                         {% endfor %}
                         {% endif %}
                         <form action="#" method="POST" >
+                            {% csrf_token %}
                             <div class="form_inner_div">
                                 <label for="text"><i class="fa-solid fa-user"></i></label>
                                 <input type="text" name="name" id="text" placeholder="Enter Your Name" required>
