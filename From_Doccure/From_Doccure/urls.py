@@ -35,6 +35,6 @@ urlpatterns = [
     path('',include('auth_user.urls')),
     path('social-auth/',include('social_django.urls',namespace='social')),
     # path('user/',include('user.urls')),
-    # path('accounts/', include('allauth.urls')),
+    
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

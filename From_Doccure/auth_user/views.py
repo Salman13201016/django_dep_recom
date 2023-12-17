@@ -12,28 +12,6 @@ from django.utils.html import format_html
 from . models import user_register
 
 
-# from allauth.socialaccount.models import SocialAccount
-# from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
-
-
-
-# def home_socail(request):
-#     try:
-#         google_provider = SocialAccount.objects.get(provider='google')
-#     except MultipleObjectsReturned:
-#         print("Multiple 'google' providers found:")
-#         for provider in SocialAccount.objects.filter(provider='google'):
-#             print(provider.client_id)
-#         raise
-#     except ObjectDoesNotExist:
-#         print("No 'google' provider found.")
-#         raise
-
-#     return render(request, 'auth_user/signup.html', {'google_provider': google_provider})
-
-
-
-
 
 def user_index_panel(request):
 

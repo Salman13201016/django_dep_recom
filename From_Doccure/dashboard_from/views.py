@@ -18,7 +18,7 @@ from django.dispatch import receiver
 
 # @login_required
 # @login_required(login_url="/aut_login/")
-@login_required
+# @login_required
 def name_panel(request):
     google_data = request.session.get('social_auth_google-oauth2')
     print(google_data)

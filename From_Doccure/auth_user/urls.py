@@ -26,11 +26,5 @@ urlpatterns = [
     
     
     
-    # path('accounts/login/',auth_views.LoginView.as_view(template_name='auth_user/login.html', authentication_form=LoginForm) , name='aut_login'),
-    
-    # path('email_verification/0TH4YfuzCT_uHWogFhYcZeSCh0stERoBb3UHHf8n2G8', a_user.email_verification_view, name='email_verification'),
-    
-    # path('index_store/', user.index_store,name='index_store'),
-    # path('logout/', auth_views.LogoutView.as_view(next_page='aut_login'),name='aut_logout') 
     
 ]
