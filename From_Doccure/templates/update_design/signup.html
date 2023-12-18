@@ -91,9 +91,12 @@
                                 <p class="or_text">OR</p>
                                 <div class="ordiv"></div>
                             </div>
-                            <button type="submit" class="google_btn">
+                            <!-- <button type="submit" class="google_btn"> -->
+                                <a class="google_btn" href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static '/assets/update_design/img/logo/google2-removebg-preview.png' %}" alt=""></a>
+                                <!-- </button> -->
+                            {% comment %} <button type="submit" class="google_btn">
                                 <a href="#"><img src="{% static '/assets/update_design/img/logo/google2-removebg-preview.png' %}" alt=""></a>
-                            </button> 
+                            </button>  {% endcomment %}
                             <div class="auth_btn_back">
                                 <a href="{% url 'aut_login' %}">If Registered</a>
                             </div>                       

@@ -55,7 +55,7 @@
                         </div>
                         {% endfor %}
                     {% endif %}
-                    <form action="#" method="POST" >
+                    <form action="" method="POST" >
                         {% csrf_token %}
                         <div class="form_inner_div">
                             <label for="email"><i class="fa-solid fa-envelope"></i></label>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="auth_btns">
                             <div class="auth_login_btn"><button type="submit" class="auth_btn">Log in</button></div>
-                            <div class="auth_rember_btn"><a class="remember" href="forgotpass.html">Forgot password?</a></div>
+                            <div class="auth_rember_btn"><a class="remember" href="{% url 'forgotpass' %}">Forgot password?</a></div>
                         </div>
                         
                         <div class="or">

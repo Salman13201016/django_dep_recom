@@ -197,6 +197,9 @@ def Terms_of_use(request):
 def Privacy_policy(request):
     return render(request,'update_design/privacy.html')
 
+def forgot_pass(request):
+    return render(request,'update_design/forgotpass.html')
+
 
    
 

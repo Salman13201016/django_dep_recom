@@ -37,7 +37,8 @@
         <div class="container">
             <div class="forgot_main">
                 <h2 class="forgot_title">Enter your email for get the reset link</h2>
-                <form action="#">
+                <form action="#" method="POST" >
+                    {% csrf_token %}
                     <input class="forgot_input" type="text" placeholder="Enter your email">
                     <button type="submit" class="forgot_send_btn">Submit</button>
                 </form>
@@ -51,7 +52,7 @@
         <div class="container">
             <div class="footer_main">
                 <div class="copyrights">
-                    <p class="copy_content">All Rights Reserved By <a href="index.html">Digiverse</a></p>
+                    <p class="copy_content">All Rights Reserved By <a href="{% url 'aut_index' %}">Digiverse</a></p>
                 </div>
                 <div class="login_privacy">
                     <a href="{% url 'term' %}">Terms of use</a>
