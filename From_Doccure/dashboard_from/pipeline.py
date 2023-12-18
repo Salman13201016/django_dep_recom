@@ -14,6 +14,7 @@ def capture_social_auth_data(backend, user, request, response, details, *args, *
         google_data = {
             'uid': response.get('sub'),
             'email': response.get('email'),
+            'uname': response.get('given_name'),
             # Add other Google-related data as needed
         }
         request.session['social_auth_google-oauth2'] = google_data

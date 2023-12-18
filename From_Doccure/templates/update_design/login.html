@@ -55,15 +55,15 @@
                         </div>
                         {% endfor %}
                     {% endif %}
-                    <form action="#" method="POST" >
+                    <form action="{% url 'aut_login' %}" method="POST">
                         {% csrf_token %}
                         <div class="form_inner_div">
                             <label for="email"><i class="fa-solid fa-envelope"></i></label>
-                            <input type="email" name="email" id="email" placeholder="Enter Email">
+                            <input type="email" name="email" id="email" placeholder="Enter Email" required>
                         </div>                        
                         <div class="form_inner_div">
                             <label for="pass"><i class="fa-solid fa-lock"></i></label>
-                            <input type="password" name="pass" id="pass" placeholder="Enter Password">
+                            <input type="password" name="pass" id="pass" placeholder="Enter Password" required>
                         </div>
                         <div class="auth_btns">
                             <div class="auth_login_btn"><button type="submit" class="auth_btn">Log in</button></div>

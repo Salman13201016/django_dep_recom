@@ -146,7 +146,7 @@ STATICFILES_DIRS  = [static_dir,]
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/'media/'
-LOGIN_URL = 'home'
+LOGIN_URL = 'prediction_panel'
 STATIC_ROOT = 'staticfiles'
 
 
@@ -168,7 +168,7 @@ AUTHENTICATION_BACKENDS = [
     # Add other authentication backends as needed
 ]
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'prediction_panel'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '229553171688-v842vpaunkrkch4ala37q5fep5errq5c.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
