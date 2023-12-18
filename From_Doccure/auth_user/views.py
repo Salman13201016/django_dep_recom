@@ -34,7 +34,7 @@ def user_index_panel(request):
 # Create your views here.
 def signup_auth_panel(request):
     if 'user_id' in request.session:
-        return redirect('/hm/')
+        return redirect('prediction_panel')
     if request.method == 'POST':
         fname = request.POST.get('name')
         email = request.POST.get('email').strip()
@@ -141,7 +141,7 @@ def email_verify(request,id):
 def login_auth_panel(request):
     if 'user_id' in request.session:
         print(1)
-        return redirect('home')
+        return redirect('prediction_panel')
     
     else:
         print(2)
@@ -149,24 +149,28 @@ def login_auth_panel(request):
         print(google_data)
         if google_data:
             print(3)
-            return redirect('/hm/')
+            return redirect('prediction_panel')
         
         if request.method == 'POST':
+            print(4)
             email = request.POST.get('email')
             password = request.POST.get('pass')
             # user = None
             try:
+                print(5)
                 
                 user = user_register.objects.get(email=email)
                 print(user)
 
 
                 if user.password==password:
+                    print(6)
                     request.session['user_id'] = user.id
                     request.session['user_email'] = user.email
                     request.session['user_fname'] = user.fname
-                    return redirect('/hm/')
+                    return redirect('prediction_panel')
                 else:
+                    print(7)
                     # return HttpResponse("Login Failed")
                     messages.success(request, 'Wrong Password')
                     return redirect('/login/')

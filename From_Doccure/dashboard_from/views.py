@@ -26,6 +26,9 @@ def name_panel(request):
     # request.session['user_gemail'] = google_data.email
     if google_data:
         return render(request,'common_code/home.html')
+    elif 'user_id' in request.session:
+        return render(request,'common_code/home.html')
+
     else:
         return redirect('aut_login')
 

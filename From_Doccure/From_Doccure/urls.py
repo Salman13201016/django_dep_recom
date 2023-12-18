@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hm/',include('dashboard_from.urls'),name='home'),
     path('symptom/',include('symptom.urls')),
-    # path('prediction/',include('prediction.urls')),
+    path('prediction/',include('prediction.urls')),
     path('division/',include('division.urls')),
     path('district/',include('district.urls')),
     path('station/',include('station.urls')),
