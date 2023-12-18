@@ -34,7 +34,7 @@ def user_index_panel(request):
 # Create your views here.
 def signup_auth_panel(request):
     if 'user_id' in request.session:
-        return redirect('/hm/')
+        return redirect('prediction_panel')
     if request.method == 'POST':
         fname = request.POST.get('name')
         email = request.POST.get('email').strip()
@@ -140,35 +140,55 @@ def email_verify(request,id):
 
 def login_auth_panel(request):
     if 'user_id' in request.session:
-        return redirect('/hm/')
-    google_data = request.session.get('social_auth_google-oauth2')
-    print(google_data)
-    # request.session['user_gid'] = google_data.uid
-    # request.session['user_gemail'] = google_data.email
-    if google_data:
-        return redirect('/hm/')
+        print(1)
+        return redirect('prediction_panel')
+    
     else:
+        print(2)
+        google_data = request.session.get('social_auth_google-oauth2')
+        print(google_data)
+        if google_data:
+            print(3)
+            return redirect('prediction_panel')
         
         if request.method == 'POST':
+            print(4)
             email = request.POST.get('email')
             password = request.POST.get('pass')
-            user = user_register.objects.get(email=email)
-            
-            if user.password==password:
-                request.session['user_id'] = user.id
-                request.session['user_email'] = user.email
-                request.session['user_fname'] = user.fname
-                return redirect('/hm/')
+            # user = None
+            try:
+                print(5)
+                
+                user = user_register.objects.get(email=email)
+                print(user)
 
-            # user = authenticate(request, email=email, password=password)
-            
-            # if user:
-            #     # login(request, user)
-            #     return redirect('/hm/')
-            else:
-                # return HttpResponse("Login Failed")
-                messages.success(request, 'Email or Password Wrong')
+
+                if user.password==password:
+                    print(6)
+                    request.session['user_id'] = user.id
+                    request.session['user_email'] = user.email
+                    request.session['user_fname'] = user.fname
+                    return redirect('prediction_panel')
+                else:
+                    print(7)
+                    # return HttpResponse("Login Failed")
+                    messages.success(request, 'Wrong Password')
+                    return redirect('/login/')
+            except user_register.DoesNotExist:
+                
+                messages.success(request, 'this user is not available')
                 return redirect('/login/')
+
+                # user = authenticate(request, email=email, password=password)
+                
+                # if user:
+                #     # login(request, user)
+                #     return redirect('/hm/')
+                
+            
+            # request.session['user_gid'] = google_data.uid
+            # request.session['user_gemail'] = google_data.email
+            
         else:
             return render(request, 'update_design/login.html')
 
