@@ -20,6 +20,7 @@ urlpatterns = [
     path('signup_stor/', a_user.user_index_panel,name='signup_stor'),
     path("email_verification/<str:id>", a_user.email_verify,name='email_verify'),
     
+    path('forgotpass/', a_user.forgot_pass,name='forgotpass'),
     
     
     

@@ -28,6 +28,8 @@ def name_panel(request):
         return render(request,'common_code/home.html')
     elif 'user_id' in request.session:
         return render(request,'common_code/home.html')
+    elif 'user_id' in request.session:
+        return render(request,'common_code/home.html')
 
     else:
         return redirect('aut_login')
@@ -94,7 +96,8 @@ def delete(request, id):
 #Disease start
  
 def disease_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         data2 = Doctor_Depert_name.objects.all()   
         context = {"disease_data":data2}
     else:

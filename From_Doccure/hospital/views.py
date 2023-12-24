@@ -7,15 +7,14 @@ from . import models
 # Create your views here.
 
 def Hospital_Name_panel(request):
-    google_data = request.session.get('social_auth_google-oauth2')
-    if 'user_id' in request.session or google_data:
+    # if 'user_id' in request.session:
         hospital_data = hospital_categories.objects.values('hos_cat').distinct()
         storage = messages.get_messages(request)
         storage.used = True
         context = {'hos_data':hospital_data,}
-    else:
-        return redirect('aut_login')
-    return render(request,'form/Hospital/hospital.html', context)
+    # else:
+    #     return redirect('aut_login')
+        return render(request,'form/Hospital/hospital.html', context)
 
 def Hospital_Name_store(request):
     
@@ -35,3 +34,10 @@ def Hospital_Name_store(request):
             
     except (IntegrityError) as e: 
         messages.error(request, 'The Hospital name hase been inserted Successfully')
+        
+        
+def hospitals_index_page(request):
+    return render(request,'hospitals/hospital_all_code/index.html')
+
+# def hospitals_common_page(request):
+#     return render(request,'hospitals/hospital_all_code/common_code.html')
