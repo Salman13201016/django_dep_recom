@@ -34,7 +34,7 @@ def user_index_panel(request):
 # Create your views here.
 def signup_auth_panel(request):
     if 'user_id' in request.session:
-        return redirect('prediction_panel')
+        return redirect('home')
     if request.method == 'POST':
         fname = request.POST.get('name')
         email = request.POST.get('email').strip()
@@ -139,9 +139,10 @@ def email_verify(request,id):
 
 
 def login_auth_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         print(1)
-        return redirect('prediction_panel')
+        return redirect('home')
     
     else:
         print(2)
@@ -149,7 +150,7 @@ def login_auth_panel(request):
         print(google_data)
         if google_data:
             print(3)
-            return redirect('prediction_panel')
+            return redirect('home')
         
         if request.method == 'POST':
             print(4)
@@ -168,7 +169,7 @@ def login_auth_panel(request):
                     request.session['user_id'] = user.id
                     request.session['user_email'] = user.email
                     request.session['user_fname'] = user.fname
-                    return redirect('prediction_panel')
+                    return redirect('home')
                 else:
                     print(7)
                     # return HttpResponse("Login Failed")

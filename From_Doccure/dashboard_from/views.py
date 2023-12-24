@@ -35,7 +35,8 @@ def name_panel(request):
         return redirect('aut_login')
 
 def dep_name_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         data1 = Doctor_Depert_name.objects.values('id','name').distinct()
         storage = messages.get_messages(request)
         storage.used = True
@@ -95,7 +96,8 @@ def delete(request, id):
 #Disease start
  
 def disease_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         data2 = Doctor_Depert_name.objects.all()   
         context = {"disease_data":data2}
     else:

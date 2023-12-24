@@ -7,7 +7,8 @@ from django.db import IntegrityError
 # Create your views here.
 
 def symptom_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         data_dep = Doctor_Depert_name.objects.all()   
         data_disea = Sub_Disease.objects.all()   
         context = {"disease_data":data_disea, 'depert_dep':data_dep}

@@ -7,7 +7,8 @@ from django.db import IntegrityError
 # Create your views here.
 
 def hosp_map_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         hos_map_data = address_name.objects.all()      
         context = {"map_data":hos_map_data}
     else:

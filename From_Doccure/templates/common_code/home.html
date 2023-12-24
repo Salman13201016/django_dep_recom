@@ -152,12 +152,12 @@
 									<img src="{% static 'assets/img/profiles/avatar-01.jpg' %}" alt="User Image" class="avatar-img rounded-circle">
 								</div>
 								<div class="user-text">
-									<h6>Ryan Taylor</h6>
-									<p class="text-muted mb-0">Administrator</p>
+									<h6>{{uname}}</h6>
+									{% comment %} <p class="text-muted mb-0">Administrator</p> {% endcomment %}
 								</div>
 							</div>
-							<a class="dropdown-item" href="profile.html">My Profile</a>
-							<a class="dropdown-item" href="settings.html">Settings</a>
+							<a class="dropdown-item" href="">My Profile</a>
+							{% comment %} <a class="dropdown-item" href="settings.html">Settings</a> {% endcomment %}
 							<a class="dropdown-item" href="{% url 'auth_logout' %}">Logout</a>
 						</div>
 					</li>
@@ -177,7 +177,7 @@
 							<li class="menu-title"> 
 								<span>Main</span>
 							</li>
-							<!-- <li class="{{active}}"> 
+							<li class="{{active}}"> 
 								<a href="{% url 'home' %}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
 							</li>
 							<li class="{{active}}"> 
@@ -191,10 +191,10 @@
 							</li>
 							<li class="{{active}}"> 
 								<a href="{% url 'sym_panel' %}"><i class="fe fe-users"></i> <span>Symptom</span></a>
-							</li>	 -->
-							<li class="{{active}}"> 
-								<a href="{% url 'prediction_panel' %}"><i class="fe fe-users"></i> <span>Diagonosis symptomp</span></a>
 							</li>
+							{% comment %} <li class="{{active}}"> 
+								<a href="{% url 'prediction_panel' %}"><i class="fe fe-users"></i> <span>Diagonosis symptomp</span></a>
+							</li> {% endcomment %}
 							<li class="{{active}}"> 
 								<a href="#"><i class="fe fe-users"></i> <span>Symptomp History</span></a>
 							</li>
