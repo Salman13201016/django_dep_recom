@@ -16,7 +16,8 @@ from django.db import IntegrityError
 #         return redirect('aut_login')
     
 def address_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         divi_data = Division_Name.objects.all()   
         dis_data = District_Name.objects.all()   
         hos_data = hospital_categories.objects.all()   
@@ -28,7 +29,8 @@ def address_panel(request):
 
 def address_store(request):
     try:
-        if 'user_id' in request.session:
+        google_data = request.session.get('social_auth_google-oauth2')
+        if 'user_id' in request.session or google_data:
             Div_fk = request.POST.get('Div_fk')
             Dis_fk = request.POST.get('Dis_fk')
             Hos_fk = request.POST.get('Hos_fk')
