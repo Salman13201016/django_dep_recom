@@ -58,9 +58,9 @@
                                               </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleSelectGender">Select Hospital Name</label>			
+                                            <label for="exampleSelectGender">Select Hospital Category Name</label>			
                                               <select class="form-control" id="exampleSelectGender" name="Hos_fk">
-                                                <option>Select Hospital</option>
+                                                <option>Select Hospital Category</option>
                                                 {% for data_hosptal in hosp_data %}
                                                 <option value="{{ data_hosptal.id }}">{{ data_hosptal.hos_cat }}</option>
                                                 {% endfor %}
