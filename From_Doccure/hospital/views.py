@@ -7,7 +7,8 @@ from . import models
 # Create your views here.
 
 def Hospital_Name_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         hospital_data = hospital_categories.objects.values('hos_cat').distinct()
         storage = messages.get_messages(request)
         storage.used = True

@@ -195,7 +195,7 @@ $(document).ready(function () {
                 dept_status = data.status
                 final_result = "Based on your selected symptom we would like to recommend you to visit the department: " + data.status
                 $('.result_pred').show()
-                $('.result_pred').text("Based on your selected symptom we would like to recommend you to visit the department: " + data.status)
+                $('.result_pred').val(data.status)
 
                 $.ajax({
                     url: '/prediction/send_history_data/',
