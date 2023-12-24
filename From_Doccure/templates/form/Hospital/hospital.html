@@ -16,7 +16,7 @@
 						<div class="col-lg-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Hospital Name Inputs</h4>
+									<h4 class="card-title">Hospital Category Inputs</h4>
 								</div>
 								<div class="container-scroller">
 									{% if messages %}
@@ -31,7 +31,7 @@
 									<form class="forms-sample" method="POST" action="{% url 'hospital_store' %}" enctype="multipart/form-data">
 									  {% csrf_token %}
 									  <div class="form-group">
-										<label for="exampleInputName1"><h5 >Hospital Name</h5></label>
+										<label for="exampleInputName1"><h5 >Hospital Category</h5></label>
 										<input type="text" class="form-control" id="exampleInputName1" placeholder="Hospital Name" name="hos_cat">
 									  </div>
 									  <button type="submit" class="btn btn-primary me-2">Submit</button>
