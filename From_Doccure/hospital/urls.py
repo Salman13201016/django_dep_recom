@@ -7,8 +7,9 @@ from . import views as hospital
 urlpatterns = [
     path('', hospital.Hospital_Name_panel,name='hospital'),
     path('store/', hospital.Hospital_Name_store,name='hospital_store'),
-    path('index/', hospital.hospitals_index_page,name='index'),
-    # path('common/', hospital.hospitals_common_page,name='index'),
+    path('index/', hospital.hospitals_index_page,name='hospital_details'),
+    path('symptom_page/', hospital.hospitals_symptom_page,name='symptom_page'),
+    # path('common/', hospital.hospitals_common_page,name='common'),
     
     
 ]

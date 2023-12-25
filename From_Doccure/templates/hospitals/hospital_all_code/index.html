@@ -3,558 +3,124 @@
 {% block title %} Home {% endblock title %}
 
     {% block content %}
-    <!-- Hospital list upper row -->
-     <!-- Hospital list upper row -->
-     {% comment %} <div class="hospital_content_body">
-        <div class="hospital_body_top h_body_single">
-            <div class="hospital_top_left">
-                <div class="top_left_inner">
-                    <a class="h_location_i" href="#"><i class="fa-solid fa-location-dot"></i></a>
-                    <div class="h_location_div">
-                        <p><a class="h_sub_title" href="#">Division</a></p>
-                        <p><a class="h_sub_title2" href="#">Dhaka</a></p>
+    <!-- Hospital list 2nd row -->
+        {% comment %} <div class="hospital_content_body">
+            <div class="hospital_body_top h_body_single">
+                <div class="hospital_top_left">
+                    <div class="top_left_inner">
+                        <a class="h_location_i" href="#"><i class="fa-solid fa-location-dot"></i></a>
+                        <div class="h_location_div">
+                            <p><a class="h_sub_title" href="#">Division</a></p>
+                            <p><a class="h_sub_title2" href="#">Dhaka</a></p>
+                        </div>
+                    </div>
+                    <div class="top_left_inner">
+                        <a class="h_location_i" href="#"><i class="fa-solid fa-location-dot"></i></a>
+                        <div class="h_location_div">
+                            <p><a class="h_sub_title" href="#">District</a></p>
+                            <p><a class="h_sub_title2" href="#">Manikganj</a></p>
+                        </div>
+                    </div>
+                    <div class="top_left_inner">
+                        <a class="h_location_i" href="#"><i class="fa-solid fa-location-dot"></i></a>
+                        <div class="h_location_div">
+                            <p><a class="h_sub_title" href="#">Station</a></p>
+                            <p><a class="h_sub_title2" href="#">Singair</a></p>
+                        </div>
                     </div>
                 </div>
-                <div class="top_left_inner">
-                    <a class="h_location_i" href="#"><i class="fa-solid fa-location-dot"></i></a>
-                    <div class="h_location_div">
-                        <p><a class="h_sub_title" href="#">District</a></p>
-                        <p><a class="h_sub_title2" href="#">Manikganj</a></p>
+
+                <div class="hospital_top_right">
+                    <!-- <form class="d-none" action="#">
+                        <input type="search" class="h_inner_serch">
+                        <button class="inner_serch_btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form> -->
+                    <div class="top_right_search">
+                        <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
-                </div>
-                <div class="top_left_inner">
-                    <a class="h_location_i" href="#"><i class="fa-solid fa-location-dot"></i></a>
-                    <div class="h_location_div">
-                        <p><a class="h_sub_title" href="#">Station</a></p>
-                        <p><a class="h_sub_title2" href="#">Singair</a></p>
+                    <div class="h_search_div">
+                        <a class="top_right_filter" href="#">
+                            <div class="filter_img"><img src="./asset/images/Icons/mdi_hospital-box-outline.png" alt=""></div>
+                            <div class="h_nearest_btn">
+                                <p>Station</p>
+                                <p>Singair</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
+        </div> {% endcomment %}
 
-            <div class="hospital_top_right">
-                <!-- <form class="d-none" action="#">
-                    <input type="search" class="h_inner_serch">
-                    <button class="inner_serch_btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form> -->
-                <div class="top_right_search">
-                    <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div>
-                <div class="h_search_div">
-                    <a class="top_right_filter" href="#">
-                        <div class="filter_img"><img src="{% static 'hospital_update_design/asset/images/Icons/mdi_hospital-box-outline.png' %}" alt=""></div>
-                        <div class="h_nearest_btn">
-                            <p>Station</p>
-                            <p>Singair</p>
+        <!-- Hospital List Main div -->
+        <div class="h_list_group">
+            <ul class="h_list_ul">
+                <!-- Hospital list single -->
+                <li class="h_list_single">
+                    {% for hospital in hospital_data %}
+                    <div class="h_single_content">
+                        <div class="h_photo_data">
+                            <div class="h_photo">
+                                <img src="/media/{{ hospital.image }}" alt="">
+                            </div>
+                            <div class="h_data">
+                                <!-- Hospital Link -->
+                                <h2><a class="h_title_blue" href="#">{{ hospital.hos_name }}</a></h2>
+                                <div class="h_single_locate_div">
+                                    <p class="h_location_city">{{ hospital.address }}</p>
+                                    <p class="h_location_country">{{ hospital.zip_code }}, Bangladesh</p>
+                                </div>
+                                <div class="h_doctor_div">
+                                    <p class="h_doctors">
+                                        <img src="./asset/images/Icons/healthicons_doctor-male.png" alt="">
+
+                                        <!-- doctor count -->
+                                        <span class="h_doctor_count">25</span>
+                                        <span class="h_doctor_count">Doctors</span>
+                                    </p>
+                                    <p class="h_specialists">
+                                        <img src="./asset/images/Icons/fluent_doctor-24-filled.png" alt="">
+                                        <!-- Specialist count -->
+                                        <span class="h_doctor_count">15</span>
+                                        <span class="h_doctor_count">Specialties</span>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </a>
-                </div>
+                        <div class="h_single_rating">
+                            <button class="h_rating_btn">
+                                <i class="fa-solid fa-star"></i>
+                                <!-- rating -->
+                                <span class="h_rating_count">5</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="h_single_btn">
+                        <a class="btn_blue" href="{{ hospital.description }}">View Hospital</a>
+                    </div>
+                    {% endfor %}
+                </li>
+                
+            </ul>
+        </div>
+
+        <!-- Hospital list paginate -->
+        <div class="h_paginate">
+            <div class="h_paginate_list">
+                <button class="h_paginate_left pnr">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <span class="pagi_text">PREV</span>
+                </button>
+                <button class="h_paginate_number active_pagi">1</button>
+                <button class="h_paginate_number">2</button>
+                <button class="h_paginate_number">3</button>
+                <button class="h_paginate_number">...</button>
+                <button class="h_paginate_number">10</button>
+                <button class="h_paginate_right pnr">
+                    <span class="pagi_text">NEXT</span>
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
             </div>
         </div>
-    </div> {% endcomment %}
-
-    <!-- Hospital List Main div -->
-    <div class="h_list_group">
-        <ul class="h_list_ul">
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                {% for hospital in hospital_data %}
-                <div class="h_single_content">
-                    
-                    <div class="h_photo_data">
-                        
-                        <div class="h_photo">
-                            <img src="/media/{{ hospital.image }}" alt="image">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">{{ hospital.hos_name }}</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">{{ hospital.address }}</p>
-                                <p class="h_location_country">{{ hospital.zip_code }}, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="{{ hospital.description }}">View Hospital</a>
-                </div>
-                {% endfor %}
-            </li>
-            {% comment %} <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li>
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li>
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li>
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li>
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li>
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li>
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li>
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li>
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li>
-            <!-- Hospital list single -->
-            <li class="h_list_single">
-                <div class="h_single_content">
-                    <div class="h_photo_data">
-                        <div class="h_photo">
-                            <img src="{% static 'hospital_update_design/asset/images/hospitals/BSHL1.webp' %}" alt="">
-                        </div>
-                        <div class="h_data">
-                            <!-- Hospital Link -->
-                            <h2><a class="h_title_blue" href="#">Bangladesh Specialized Hospital</a></h2>
-                            <div class="h_single_locate_div">
-                                <p class="h_location_city">21 Shyamoli, Mirpur Road, Dhaka,</p>
-                                <p class="h_location_country">1207, Bangladesh</p>
-                            </div>
-                            <div class="h_doctor_div">
-                                <p class="h_doctors">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/healthicons_doctor-male.png' %}" alt="">
-
-                                    <!-- doctor count -->
-                                    <span class="h_doctor_count">25</span>
-                                    <span class="h_doctor_count">Doctors</span>
-                                </p>
-                                <p class="h_specialists">
-                                    <img src="{% static 'hospital_update_design/asset/images/Icons/fluent_doctor-24-filled.png' %}" alt="">
-                                    <!-- Specialist count -->
-                                    <span class="h_doctor_count">15</span>
-                                    <span class="h_doctor_count">Specialties</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h_single_rating">
-                        <button class="h_rating_btn">
-                            <i class="fa-solid fa-star"></i>
-                            <!-- rating -->
-                            <span class="h_rating_count">5</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="h_single_btn">
-                    <a class="btn_blue" href="#">View Hospital</a>
-                </div>
-            </li> {% endcomment %}
-        </ul>
-    </div>
-
-    <!-- Hospital list paginate -->
-    <div class="h_paginate">
-        <div class="h_paginate_list">
-            <button class="h_paginate_left pnr">
-                <i class="fa-solid fa-angle-left"></i>
-                <span class="pagi_text">PREV</span>
-            </button>
-            <button class="h_paginate_number active_pagi">1</button>
-            <button class="h_paginate_number">2</button>
-            <button class="h_paginate_number">3</button>
-            <button class="h_paginate_number">...</button>
-            <button class="h_paginate_number">10</button>
-            <button class="h_paginate_right pnr">
-                <span class="pagi_text">NEXT</span>
-                <i class="fa-solid fa-angle-right"></i>
-            </button>
-        </div>
-    </div>
     {% endblock content %}
 
                                 
