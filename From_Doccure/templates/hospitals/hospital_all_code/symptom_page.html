@@ -1,0 +1,141 @@
+
+{% extends 'hospitals/hospital_common_code/common_code.html' %}
+{% load static %}
+{% block title %} Symptoms {% endblock title %}
+
+    {% block content %}
+
+
+    
+    <div class="main">
+        <div class="symtomp_main">
+            <div class="symtomp_content">
+                <div class="hospital_content_header symtomp_header">
+                    <div class="hospital_search symtomp_h_form_div">
+                        <form action="#">
+                            <span class="s_id_title">Symptoms ID</span>
+                            <input type="text" value="#1231231231241" class="symtomp_id_top">
+                        </form>
+                    </div>
+                    <div class="hospital_profile">
+                        <p><i class="fa-sharp fa-solid fa-bell"></i></p>
+                        <a href="#"><img src="./asset/images/profile/profile 1 (1).png" alt=""></a>
+                    </div>
+                </div>
+                <div class="symtomp_body">
+                    <div class="symtomp_body_inner">
+                        <div class="symtomp_body_title">
+                            <h5 class="welcome">Welcome to</h5>
+                            <h1 class="title_main">Department Suggestion Portal</h1>
+                            <div class="share_get_div">
+                                <p>share symptoms | Get suggestions</p>
+                            </div>
+                            <p class="minimum_share">Share at least <b class="symtompsM">5 Symptoms</b> to get result and suggestions</p>
+                        </div>
+
+                        <!------ Select box -------->
+                        <div class="symtomp_body_content">
+                            <form class="symtomp_select_form" action="#">
+                                <div class="symtomp_select_group">
+                                    <div class="symtomp_select">
+                                        <h6 class="symtomp_number">Symtomp 1:</h6>
+                                        <select name="#" id="#" class="select_main">
+                                            <option value="1" selected>Select your Symtomps</option>
+                                            <option value="2">I have Headache</option>
+                                            <option value="3">I have Footache</option>
+                                            <option value="4">I have Cold</option>
+                                            <option value="5">I have High fever</option>
+                                            <option value="6">I have Chest Pain</option>
+                                        </select>
+                                    </div>
+                                    <div class="symtomp_select">
+                                        <h6 class="symtomp_number">Symtomp 1:</h6>
+                                        <select name="#" id="#" class="select_main">
+                                            <option value="1" selected>Select your Symtomps</option>
+                                            <option value="2">I have Headache</option>
+                                            <option value="3">I have Footache</option>
+                                            <option value="4">I have Cold</option>
+                                            <option value="5">I have High fever</option>
+                                            <option value="6">I have Chest Pain</option>
+                                        </select>
+                                    </div>
+                                    <div class="symtomp_select">
+                                        <h6 class="symtomp_number">Symtomp 1:</h6>
+                                        <select name="#" id="#" class="select_main">
+                                            <option value="1" selected>Select your Symtomps</option>
+                                            <option value="2">I have Headache</option>
+                                            <option value="3">I have Footache</option>
+                                            <option value="4">I have Cold</option>
+                                            <option value="5">I have High fever</option>
+                                            <option value="6">I have Chest Pain</option>
+                                        </select>
+                                    </div>
+                                    <div class="symtomp_select">
+                                        <h6 class="symtomp_number">Symtomp 1:</h6>
+                                        <select name="#" id="#" class="select_main">
+                                            <option value="1" selected>Select your Symtomps</option>
+                                            <option value="2">I have Headache</option>
+                                            <option value="3">I have Footache</option>
+                                            <option value="4">I have Cold</option>
+                                            <option value="5">I have High fever</option>
+                                            <option value="6">I have Chest Pain</option>
+                                        </select>
+                                    </div>
+                                    <div class="symtomp_select">
+                                        <h6 class="symtomp_number">Symtomp 1:</h6>
+                                        <select name="#" id="#" class="select_main">
+                                            <option value="1" selected>Select your Symtomps</option>
+                                            <option value="2">I have Headache</option>
+                                            <option value="3">I have Footache</option>
+                                            <option value="4">I have Cold</option>
+                                            <option value="5">I have High fever</option>
+                                            <option value="6">I have Chest Pain</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="symtomp_select_btns">
+                                    <h3 class="select_confirm">Do you want to add more symptoms?</h3>
+                                    <div class="s_select_btns">
+                                        <button class="select_btn yes">Yes</button>
+                                        <button class="select_btn">No</button>
+                                        <button class="select_btn predict_btn">Predict</button>
+                                    </div>
+                                </div>
+                                <!----------- Popup box ------------>
+                                <div class="symtomp_popup d-none">
+                                    <div class="symtomp_popup_inner">
+                                        <div class="popup_header">
+                                            <h3 class="popup_depertment">Recommended Department </h3>
+                                            <button class="dep_popup_close"><i class="fa-solid fa-xmark"></i></button>
+                                        </div>
+                                        <div class="popup_body">
+                                            <p class="popup_label">Recommended Department is:</p>
+                                            <input class="popup_input" type="text" placeholder="Infectious Disease Department" disabled>
+                                            <p class="consult_with">Do you want to consult a <b>Doctor?</b></p>
+                                            <div class="inner_btns">
+                                                <button class="btn_no" type="submit">No</button>
+                                                <button class="btn_yes" type="submit">Yes</button>
+                                            </div>
+                                            <div class="popup_footer">
+                                                <p class="p_footer_title">Visit your nearest <b>Hospital?</b></p>
+                                                <a class="p_footer_btn" href="#">
+                                                    <i class="fa-regular fa-square-plus"></i> 
+                                                    <p class="footer_btn_text">NearestHospital</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}
+
+

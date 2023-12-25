@@ -59,7 +59,10 @@ def hospitals_index_page(request):
         }
     return render(request,'hospitals/hospital_all_code/index.html', context)
 
+def hospitals_symptom_page(request):
+    return render(request,'hospitals/hospital_all_code/symptom_page.html')
+
 # def hospitals_common_page(request):
-#     return render(request,'hospitals/hospital_all_code/common_code.html')
+#     return render(request,'hospitals/hospital_common_code/common_code.html')
 
 
