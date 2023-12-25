@@ -9,7 +9,8 @@ from django.db import IntegrityError
 # Create your views here.
 
 def hospital_depart_panel(request):
-    if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         hospila_dep_data = hospital_department.objects.all() 
         dept_fk_data = Doctor_Depert_name.objects.all()     
         hosp_fk_data = hospital_categories.objects.all()     

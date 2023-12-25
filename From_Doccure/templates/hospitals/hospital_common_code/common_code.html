@@ -47,7 +47,7 @@
 
                             <!---------- Hospitals -------->
                             <li class="nav-item" role="presentation">
-                                <a href="{% url 'hospital_details' %}" class="nav-link_aside" ><img src="{% static 'hospital_update_design/asset/images/Icons/IconSet.png' %}" alt=""> Hospitals</a>
+                                <a href="{% url 'hospital_details' %}" class="nav-link_aside" id="getNearbyHospitals"><img src="{% static 'hospital_update_design/asset/images/Icons/IconSet.png' %}" alt=""> Hospitals</a>
                             </li>
 
                             <li class="nav-item" role="presentation">
@@ -104,7 +104,9 @@
 
 
     <!-------------- Custom js ------------>
+    <script src="{% static 'hospital_update_design/asset/js/my_location.js' %}"></script>
     <script src="{% static 'hospital_update_design/asset/js/script.js' %}"></script>
+    
 
 </body>
 </html>
