@@ -84,6 +84,16 @@ img{
     color: var(--blue);
 }
 
+.display_block{
+    display: block !important;
+}
+.display_none{
+    display: none !important;
+}
+.scale_0{
+    transform: scale(0) !important;
+}
+
 /*========== Styling Start ==========*/
 .main_section{
     padding: 0;
@@ -220,9 +230,6 @@ img{
 }
 #h_top_search_icon i{
     color: var(--blue);
-}
-.display_block{
-    display: block !important;
 }
 
 .hospital_content_header .hospital_search form .h_search_bar{
@@ -677,7 +684,7 @@ color: var(--black30);
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, .1);
+    background: rgba(24, 25, 90, .3);
     width: 100vw;
     height: 100vh;
 }
@@ -841,4 +848,174 @@ color: var(--black30);
 }
 .popup_footer .p_footer_btn:hover i{
     color: var(--white);
+}
+
+/*============= Symtomp History ================*/
+.minimum_share_history{
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+}
+.symtomp_body_inner .s_history_table{
+    width: 100%;
+}
+.s_history_table .history_table{
+    width: 100%;
+    border-top: 1px solid #e1e2e9;
+    border-bottom: 1px solid #e1e2e9;
+}
+.s_history_table .history_table .h_table_head tr{
+    height: 3.2rem;
+    line-height: 3rem;
+    border-bottom: 1px solid #e1e2e9;
+}
+.s_history_table .history_table tbody tr{
+    height: 3.2rem;
+    line-height: 3rem;
+}
+.h_table_head tr th{
+    font-size: 14px;
+    font-weight: 700;
+    color: #2C2D33;
+    text-transform: uppercase;
+}
+.h_table_body tr td{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #45464E;
+}
+.h_table_body tr td a{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    color: #1B5A90;
+    text-decoration: none;
+    border-bottom: .1rem solid #1B5A90;
+    transition: .3s;
+}
+.h_table_body tr td a:hover{
+    color: #000000;
+    border-color: #000000;
+}
+.s_history_table .history_table input[type=checkbox]{
+    width: 1.2rem;
+    height: 1.5rem;
+    border-radius: .5rem;
+    background: #CFD3D4;
+}
+
+.symtomp_body_inner .table_more_info{
+    margin-top: 1rem;
+}
+.table_more_info form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
+}
+.t_more_left .left_select{
+    background: #5E636614;
+    border-color: transparent;
+    color:#8B8D97;
+    font-size: 12px;
+    padding: .2rem .5rem;
+    border-radius: .5rem;
+}
+.t_more_left .left_item{
+    color:#8B8D97;
+    font-size: 14px;
+    font-weight: 400;
+    margin: auto 1rem;
+}
+.t_more_left .left_count{
+    color:#8B8D97;
+    font-size: 14px;
+    font-weight: 400;
+}
+.t_more_left .left_total{
+    color:#8B8D97;
+    font-size: 14px;
+    font-weight: 400;
+}
+.t_more_right .right_select{
+    background: #5E636614;
+    border-color: transparent;
+    color:#8B8D97;
+    font-size: 12px;
+    padding: .2rem .5rem;
+    border-radius: .5rem;
+}
+.t_more_right .right_total{
+    color:#8B8D97;
+    font-size: 14px;
+    font-weight: 400;
+    margin: auto .5rem;
+}
+.t_more_right button{
+    outline: transparent;
+    border-color: transparent;
+    background: transparent;
+    border-radius: .5rem;
+    padding: .1rem .5rem;
+    transition: all .3s;
+}
+.t_more_right button i{
+    font-size: .8rem;
+    color: #8B8D97;
+}
+.t_more_right button:hover i{
+    color: var(--blue);
+}
+.symtomp_history_body{
+    padding-bottom: 2rem;
+}
+.history_popup_body{
+    margin-top: 2rem;
+}
+.history_popup_body p{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blue);
+    text-align: left;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: .5rem;
+    background: transparent;
+    border: 1px solid var(--blue);
+    padding: 0 .6rem;
+}
+.history_popup_inner{
+    width: 90vw;
+    max-width: 480px;
+    margin: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.history_popup_btn button{
+    background: var(--blue);
+    border: .1rem solid var(--blue);
+    border-radius: .5rem;
+    outline-color: transparent;
+    width: 8rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    transition: all .3s;
+}
+.history_popup_btn button:hover{
+    background: var(--white);
+    color: var(--blue);
+}
+.popup_header{
+    position: sticky;
+    top: -1.5rem;
+    padding: 1rem 0;
+    background: var(--white);
 }

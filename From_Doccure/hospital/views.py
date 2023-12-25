@@ -61,6 +61,8 @@ def hospitals_index_page(request):
 
 def hospitals_symptom_page(request):
     return render(request,'hospitals/hospital_all_code/symptom_page.html')
+def hospitals_symptom_history(request):
+    return render(request,'hospitals/hospital_all_code/symptom_history.html')
 
 # def hospitals_common_page(request):
 #     return render(request,'hospitals/hospital_common_code/common_code.html')

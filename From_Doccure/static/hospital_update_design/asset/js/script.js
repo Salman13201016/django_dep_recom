@@ -14,14 +14,29 @@ for(let i = 0; i<sitebarmenu.length; i++){
     })
 }
 
-// Symtomp popup btn
-let predic_btn = document.querySelector(".predict_btn");
-predic_btn.addEventListener('click', function(){
-    let popup = document.querySelector(".symtomp_popup");
-    popup.classList.add("display_block");
-})
-let popup_close = document.querySelector(".dep_popup_close");
-popup_close.addEventListener('click', function(){
-    let popup = document.querySelector(".symtomp_popup");
-    popup.classList.remove("display_block");
-})
+// Symtomp popup open btn
+let predic_btn = document.querySelectorAll(".popup_open");
+for(let i =0; i < predic_btn.length; i ++){
+    predic_btn[i].addEventListener("click", function () {
+      let popup = document.querySelector(".symtomp_popup");
+      popup.classList.add("display_block");
+    });
+}
+
+// Symtomp popup btn close
+let popup_close = document.querySelectorAll(".dep_popup_close");
+for(let i =0; i <popup_close.length; i++){
+    popup_close[i].addEventListener("click", function () {
+      let popup = this.parentElement.parentElement.parentElement;
+      popup.classList.remove("display_block");
+    });
+}
+
+// Symtomp popup close ok btn
+let popup_close_ok = document.querySelectorAll(".popup_ok");
+for (let i = 0; i < popup_close_ok.length; i++) {
+  popup_close_ok[i].addEventListener("click", function () {
+    let popup_ok = this.parentElement.parentElement.parentElement;
+    popup_ok.classList.add("display_none");
+  });
+}

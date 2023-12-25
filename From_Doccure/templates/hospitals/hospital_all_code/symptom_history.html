@@ -1,0 +1,214 @@
+{% extends 'hospitals/hospital_common_code/common_code.html' %}
+{% load static %}
+{% block title %} Symptoms {% endblock title %}
+
+    {% block content %}
+
+<div class="main">
+    <div class="symtomp_main">
+        <div class="symtomp_content">
+            <div class="hospital_content_header symtomp_header">
+                <div class="hospital_search symtomp_h_form_div">
+                    <form action="#">
+                        <span class="s_id_title">Symptoms ID</span>
+                        <input type="text" value="#1231231231241" class="symtomp_id_top">
+                    </form>
+                </div>
+                <div class="hospital_profile">
+                    <p><i class="fa-sharp fa-solid fa-bell"></i></p>
+                    <a href="#"><img src="./asset/images/profile/profile 1 (1).png" alt=""></a>
+                </div>
+            </div>
+            <div class="symtomp_body symtomp_history_body">
+                <div class="symtomp_body_inner">
+                    <div class="symtomp_body_title">
+                        <h5 class="welcome">Welcome to</h5>
+                        <h1 class="title_main">Department Suggestion Portal</h1>
+                        <div class="share_get_div">
+                            <p>share symptoms | Get suggestions</p>
+                        </div>
+                        <p class="minimum_share minimum_share_history">Symtomp History</p>
+                    </div>
+
+                    <!------ History Table -------->
+                    <div class="s_history_table">
+                        <table class="history_table">
+                            <thead class="h_table_head">
+                                <tr>
+                                    <th ><input class="history_check" type="checkbox"></th>
+                                    <th >SYMPTOMS ID</th>
+                                    <th >SYMPTOMS</th>
+                                    <th >PREDICTION</th>
+                                    <th >DATE</th>
+                                </tr>
+                            </thead>
+                            <tbody class="h_table_body">
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td>
+                                        <a class="popup_open" href="#"><span>I have  headache</span>, <span>eyeache</span> , <span>High fever</span>...</a>
+                                        <div class="history_popup symtomp_popup d-none">
+                                            <div class="history_popup_inner symtomp_popup_inner">
+                                                <div class="popup_header">
+                                                    <h3 class="popup_depertment">My Symptoms</h3>
+                                                    <button class="dep_popup_close"><i class="fa-solid fa-xmark"></i></button>
+                                                </div>
+                                                <div class="history_popup_body">
+                                                    <p>I have  headache</p>
+                                                    <p>eyeache</p>
+                                                    <p>High fever</p>
+                                                    <p>More</p>
+                                                    <p>More</p>
+                                                    <p>More</p>
+                                                </div>
+                                                <div class="history_popup_btn popup_ok">
+                                                    <button>Ok</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td>
+                                        <a class="popup_open" href="#"><span>I have  test</span>, <span>eyeache</span> , <span>High fever</span>...</a>
+                                        <div class="history_popup symtomp_popup d-none">
+                                            <div class="history_popup_inner symtomp_popup_inner">
+                                                <div class="popup_header">
+                                                    <h3 class="popup_depertment">My Symptoms</h3>
+                                                    <button class="dep_popup_close"><i class="fa-solid fa-xmark"></i></button>
+                                                </div>
+                                                <div class="history_popup_body">
+                                                    <p>I have  test</p>
+                                                    <p>eyeache</p>
+                                                    <p>High fever</p>
+                                                    <p>More</p>
+                                                    <p>More</p>
+                                                    <p>More</p>
+                                                </div>
+                                                <div class="history_popup_btn popup_ok">
+                                                    <button class="popup_ok">Ok</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="history_check" type="checkbox"></td>
+                                    <td>#1231231231241</td>
+                                    <td><a href="#">I have  headache, eyeache, High fever...</a></td>
+                                    <td>Infectious Disease Department</td>
+                                    <td>12 Aug 2022 - 12:25 am</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table_more_info">
+                        <form action="#">
+                            <div class="t_more_left">
+                                <select class="left_select" name="#" id="#">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="10" selected>10</option>
+                                </select>
+                                <span class="left_item">Items per page</span>
+                                <span class="left_count">1-10</span>
+                                <span class="left_total">of 200 items</span>
+                            </div>
+                            <div class="t_more_right">
+                                <select class="right_select" name="#" id="#">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                <span c>of 44 pages</span>
+                                <button class="btn_prev" type="submit"><i class="fa-solid fa-angle-left"></i></button>
+                                <button class="btn_next" type="submit"><i class="fa-solid fa-angle-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
