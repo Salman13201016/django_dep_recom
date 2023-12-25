@@ -56,55 +56,13 @@
             <ul class="h_list_ul">
                 <!-- Hospital list single -->
                 <li class="h_list_single">
-                    {% for hospital in hospital_data %}
-                    <div class="h_single_content">
-                        <div class="h_photo_data">
-                            <div class="h_photo">
-                                <img src="/media/{{ hospital.image }}" alt="">
-                            </div>
-                            <div class="h_data">
-                                <!-- Hospital Link -->
-                                <h2><a class="h_title_blue" href="#">{{ hospital.hos_name }}</a></h2>
-                                <div class="h_single_locate_div">
-                                    <p class="h_location_city">{{ hospital.address }}</p>
-                                    <p class="h_location_country">{{ hospital.zip_code }}, Bangladesh</p>
-                                </div>
-                                <div class="h_doctor_div">
-                                    <p class="h_doctors">
-                                        <img src="./asset/images/Icons/healthicons_doctor-male.png" alt="">
-
-                                        <!-- doctor count -->
-                                        <span class="h_doctor_count">25</span>
-                                        <span class="h_doctor_count">Doctors</span>
-                                    </p>
-                                    <p class="h_specialists">
-                                        <img src="./asset/images/Icons/fluent_doctor-24-filled.png" alt="">
-                                        <!-- Specialist count -->
-                                        <span class="h_doctor_count">15</span>
-                                        <span class="h_doctor_count">Specialties</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="h_single_rating">
-                            <button class="h_rating_btn">
-                                <i class="fa-solid fa-star"></i>
-                                <!-- rating -->
-                                <span class="h_rating_count">5</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="h_single_btn">
-                        <a class="btn_blue" href="{{ hospital.description }}">View Hospital</a>
-                    </div>
-                    {% endfor %}
                 </li>
                 
             </ul>
         </div>
 
         <!-- Hospital list paginate -->
-        <div class="h_paginate">
+        <!-- <div class="h_paginate">
             <div class="h_paginate_list">
                 <button class="h_paginate_left pnr">
                     <i class="fa-solid fa-angle-left"></i>
@@ -120,7 +78,7 @@
                     <i class="fa-solid fa-angle-right"></i>
                 </button>
             </div>
-        </div>
+        </div> -->
     {% endblock content %}
 
                                 
