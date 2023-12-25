@@ -137,32 +137,39 @@ $(document).ready(function () {
         { enableHighAccuracy: true } // You can specify additional options
     );
     $('#getNearbyHospitals').click(function (event) {
-        event.preventDefault();
+        var currentUrl = window.location.href;
 
-        navigator.geolocation.getCurrentPosition(
-            function (position) {
-                const userLatitude = position.coords.latitude;
-                const userLongitude = position.coords.longitude;
-                console.log("asdasd", userLatitude, userLongitude)
+        // Check if the current URL contains a certain substring
+        if (currentUrl.indexOf('hospital/index/') !== -1) {
+            // Redirect to a new URL
 
-                $.get('/hospital/index/', {
-                    latitude: userLatitude,
-                    longitude: userLongitude
-                }, function (response) {
-                    console.log(response)
-                    $('.h_list_single').empty()
-                    if (response.near_status == 1) {
-                        response.nearby_hospitals.forEach(function (hospital) {
-                            console.log(`Hospital ID: ${hospital.id}`);
-                            console.log(`Name: ${hospital.name}`);
-                            console.log(`Address: ${hospital.address}`);
-                            console.log(`Description: ${hospital.description}`);
-                            console.log(`Image: ${hospital.image}`);
-                            console.log(`Latitude: ${hospital.lat}`);
-                            console.log(`Longitude: ${hospital.long}`);
-                            console.log(`Distance: ${hospital.distance} km`);
-                            console.log("------");
-                            div_str = `<div class="h_single_content">
+
+            event.preventDefault();
+
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const userLatitude = position.coords.latitude;
+                    const userLongitude = position.coords.longitude;
+                    console.log("asdasd", userLatitude, userLongitude)
+
+                    $.get('/hospital/index/', {
+                        latitude: userLatitude,
+                        longitude: userLongitude
+                    }, function (response) {
+                        console.log(response)
+                        $('.h_list_single').empty()
+                        if (response.near_status == 1) {
+                            response.nearby_hospitals.forEach(function (hospital) {
+                                console.log(`Hospital ID: ${hospital.id}`);
+                                console.log(`Name: ${hospital.name}`);
+                                console.log(`Address: ${hospital.address}`);
+                                console.log(`Description: ${hospital.description}`);
+                                console.log(`Image: ${hospital.image}`);
+                                console.log(`Latitude: ${hospital.lat}`);
+                                console.log(`Longitude: ${hospital.long}`);
+                                console.log(`Distance: ${hospital.distance} km`);
+                                console.log("------");
+                                div_str = `<div class="h_single_content">
                             <div class="h_photo_data">
                                 <div class="h_photo">
                                     <img src="`+ hospital.image + `" alt="">
@@ -197,21 +204,21 @@ $(document).ready(function () {
                         <div class="h_single_btn">
                             <a class="btn_blue" href="`+ hospital.description + `" target="_blank">View Hospital</a>
                         </div>`
-                            $('.h_list_single').append(div_str)
-                        });
-                    }
-                    else {
-                        response.nearby_hospitals.nearby_hospitals.forEach(function (hospital) {
-                            console.log(`Hospital ID: ${hospital.id}`);
-                            console.log(`Name: ${hospital.name}`);
-                            console.log(`Address: ${hospital.address}`);
-                            console.log(`Description: ${hospital.description}`);
-                            console.log(`Image: ${hospital.image}`);
-                            console.log(`Latitude: ${hospital.lat}`);
-                            console.log(`Longitude: ${hospital.long}`);
-                            console.log(`Distance: ${hospital.distance} km`);
-                            console.log("------");
-                            div_str = `<div class="h_single_content">
+                                $('.h_list_single').append(div_str)
+                            });
+                        }
+                        else {
+                            response.nearby_hospitals.nearby_hospitals.forEach(function (hospital) {
+                                console.log(`Hospital ID: ${hospital.id}`);
+                                console.log(`Name: ${hospital.name}`);
+                                console.log(`Address: ${hospital.address}`);
+                                console.log(`Description: ${hospital.description}`);
+                                console.log(`Image: ${hospital.image}`);
+                                console.log(`Latitude: ${hospital.lat}`);
+                                console.log(`Longitude: ${hospital.long}`);
+                                console.log(`Distance: ${hospital.distance} km`);
+                                console.log("------");
+                                div_str = `<div class="h_single_content">
                             <div class="h_photo_data">
                                 <div class="h_photo">
                                     <img src="`+ hospital.image + `" alt="">
@@ -246,35 +253,36 @@ $(document).ready(function () {
                         <div class="h_single_btn">
                             <a class="btn_blue" href="`+ hospital.description + `" target="_blank">View Hospital</a>
                         </div>`
-                            $('.h_list_single').append(div_str)
-                        });
+                                $('.h_list_single').append(div_str)
+                            });
+                        }
+
+
+
+
+
+
+                        // const hospitalList = $('#hospitalList');
+                        // hospitalList.empty();
+
+                        // if (response.hospitals && response.hospitals.length > 0) {
+                        //     $.each(response.hospitals, function (index, hospital) {
+                        //         hospitalList.append('<li>' + hospital.name + ' - Lat: ' + hospital.latitude + ', Long: ' + hospital.longitude + '</li>');
+                        //     });
+                        // } else {
+                        //     hospitalList.append('<li>No nearby hospitals found</li>');
+                        // }
+                    });
+                },
+                function (error) {
+                    if (error.code === 1) {
+                        console.error('User denied geolocation. Please enable location services.');
+                    } else {
+                        console.error('Error getting user location:', error.message);
                     }
-
-
-
-
-
-
-                    // const hospitalList = $('#hospitalList');
-                    // hospitalList.empty();
-
-                    // if (response.hospitals && response.hospitals.length > 0) {
-                    //     $.each(response.hospitals, function (index, hospital) {
-                    //         hospitalList.append('<li>' + hospital.name + ' - Lat: ' + hospital.latitude + ', Long: ' + hospital.longitude + '</li>');
-                    //     });
-                    // } else {
-                    //     hospitalList.append('<li>No nearby hospitals found</li>');
-                    // }
-                });
-            },
-            function (error) {
-                if (error.code === 1) {
-                    console.error('User denied geolocation. Please enable location services.');
-                } else {
-                    console.error('Error getting user location:', error.message);
-                }
-            },
-            { enableHighAccuracy: true } // You can specify additional options
-        );
+                },
+                { enableHighAccuracy: true } // You can specify additional options
+            );
+        }
     });
 });
