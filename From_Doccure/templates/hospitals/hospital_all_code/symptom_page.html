@@ -35,11 +35,21 @@
 
                         <!------ Select box -------->
                         <div class="symtomp_body_content">
-                            <form class="symtomp_select_form" action="#">
+                            <form class="symtomp_select_form">
                                 <div class="symtomp_select_group">
-                                    <div class="symtomp_select">
+                                    <div class="symtomp_select ">
                                         <h6 class="symtomp_number">Symtomp 1:</h6>
-                                        <select name="#" id="#" class="select_main">
+                                        <select name="#" id="#" class="select_main form_group1 select_box select_box1 select2">
+                                            <option value="1" selected>Select your Symtomps</option>
+                                            {% for data_prediction in symptom_data1 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </select>
+                                    </div>
+                                    <div class="symtomp_select ">
+                                        <h6 class="symtomp_number">Symtomp 2:</h6>
+                                        <select name="#" id="#" class="select_main form_group2 select_box select_box2 select2" disabled>
                                             <option value="1" selected>Select your Symtomps</option>
                                             <option value="2">I have Headache</option>
                                             <option value="3">I have Footache</option>
@@ -48,9 +58,9 @@
                                             <option value="6">I have Chest Pain</option>
                                         </select>
                                     </div>
-                                    <div class="symtomp_select">
-                                        <h6 class="symtomp_number">Symtomp 1:</h6>
-                                        <select name="#" id="#" class="select_main">
+                                    <div class="symtomp_select ">
+                                        <h6 class="symtomp_number">Symtomp 3:</h6>
+                                        <select name="#" id="#" class="select_main form_group3 select_box select_box3 select2" disabled>
                                             <option value="1" selected>Select your Symtomps</option>
                                             <option value="2">I have Headache</option>
                                             <option value="3">I have Footache</option>
@@ -59,9 +69,9 @@
                                             <option value="6">I have Chest Pain</option>
                                         </select>
                                     </div>
-                                    <div class="symtomp_select">
-                                        <h6 class="symtomp_number">Symtomp 1:</h6>
-                                        <select name="#" id="#" class="select_main">
+                                    <div class="symtomp_select ">
+                                        <h6 class="symtomp_number" >Symtomp 4:</h6>
+                                        <select name="#" id="#" class="select_main form_group4 select_box select_box4 select2" disabled>
                                             <option value="1" selected>Select your Symtomps</option>
                                             <option value="2">I have Headache</option>
                                             <option value="3">I have Footache</option>
@@ -70,20 +80,9 @@
                                             <option value="6">I have Chest Pain</option>
                                         </select>
                                     </div>
-                                    <div class="symtomp_select">
-                                        <h6 class="symtomp_number">Symtomp 1:</h6>
-                                        <select name="#" id="#" class="select_main">
-                                            <option value="1" selected>Select your Symtomps</option>
-                                            <option value="2">I have Headache</option>
-                                            <option value="3">I have Footache</option>
-                                            <option value="4">I have Cold</option>
-                                            <option value="5">I have High fever</option>
-                                            <option value="6">I have Chest Pain</option>
-                                        </select>
-                                    </div>
-                                    <div class="symtomp_select">
-                                        <h6 class="symtomp_number">Symtomp 1:</h6>
-                                        <select name="#" id="#" class="select_main">
+                                    <div class="symtomp_select ">
+                                        <h6 class="symtomp_number">Symtomp 5:</h6>
+                                        <select name="#" id="#" class="select_main form_group5 select_box select_box5 select2" disabled>
                                             <option value="1" selected>Select your Symtomps</option>
                                             <option value="2">I have Headache</option>
                                             <option value="3">I have Footache</option>
@@ -95,11 +94,11 @@
                                 </div>
 
                                 <div class="symtomp_select_btns">
-                                    <h3 class="select_confirm">Do you want to add more symptoms?</h3>
+                                    <!-- <h3 class="select_confirm">Do you want to add more symptoms?</h3> -->
                                     <div class="s_select_btns">
-                                        <button class="select_btn yes">Yes</button>
-                                        <button class="select_btn">No</button>
-                                        <button class="select_btn predict_btn">Predict</button>
+                                        <!-- <button class="select_btn yes">Yes</button>
+                                        <button class="select_btn">No</button> -->
+                                        <button type="button" class="select_btn predict_btn predict_dept" style="display: none;">Predict</button>
                                     </div>
                                 </div>
                                 <!----------- Popup box ------------>
@@ -111,7 +110,7 @@
                                         </div>
                                         <div class="popup_body">
                                             <p class="popup_label">Recommended Department is:</p>
-                                            <input class="popup_input" type="text" placeholder="Infectious Disease Department" disabled>
+                                            <input class="popup_input result_pred" type="text" disabled>
                                             <p class="consult_with">Do you want to consult a <b>Doctor?</b></p>
                                             <div class="inner_btns">
                                                 <button class="btn_no" type="submit">No</button>

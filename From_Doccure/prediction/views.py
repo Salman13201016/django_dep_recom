@@ -10,6 +10,28 @@ from django.db.models import Q
 # import tensorflow as tf
 
 # Create your views here.
+def hospitals_symptom_page(request):
+    data_symptom1 = Symptom.objects.values_list('symptom1',flat=True).distinct()
+    data_symptom2 = Symptom.objects.values_list('symptom2',flat=True).distinct()    
+    data_symptom3 = Symptom.objects.values_list('symptom3',flat=True).distinct()    
+    data_symptom4 = Symptom.objects.values_list('symptom4',flat=True).distinct()    
+    data_symptom5 = Symptom.objects.values_list('symptom5',flat=True).distinct()    
+    data_symptom6 = Symptom.objects.values_list('symptom6',flat=True).distinct()    
+    data_symptom7 = Symptom.objects.values_list('symptom7',flat=True).distinct()    
+    data_symptom8 = Symptom.objects.values_list('symptom8',flat=True).distinct()    
+    data_symptom9 = Symptom.objects.values_list('symptom9',flat=True).distinct()    
+    data_symptom10 = Symptom.objects.values_list('symptom10',flat=True).distinct()    
+    data_symptom11 = Symptom.objects.values_list('symptom11',flat=True).distinct()    
+    data_symptom12 = Symptom.objects.values_list('symptom12',flat=True).distinct()    
+    data_symptom13 = Symptom.objects.values_list('symptom13',flat=True).distinct()    
+    data_symptom14 = Symptom.objects.values_list('symptom14',flat=True).distinct()    
+    data_symptom15 = Symptom.objects.values_list('symptom15',flat=True).distinct()    
+    data_symptom16 = Symptom.objects.values_list('symptom16',flat=True).distinct()   
+    data_symptom17 = Symptom.objects.values_list('symptom17',flat=True).distinct()    
+    context = {'symptom_data1':data_symptom1,"symptom_data2":data_symptom2,"symptom_data3":data_symptom3,"symptom_data4":data_symptom4,"symptom_data5":data_symptom5,"symptom_data6":data_symptom6,"symptom_data7":data_symptom7,"symptom_data8":data_symptom8,"symptom_data9":data_symptom9,"symptom_data10":data_symptom10,"symptom_data11":data_symptom11,"symptom_data12":data_symptom12,"symptom_data13":data_symptom13,"symptom_data14":data_symptom14,"symptom_data15":data_symptom15,"symptom_data16":data_symptom16,"symptom_data17":data_symptom17}
+    return render(request,'hospitals/hospital_all_code/symptom_page.html',context)
+def hospitals_symptom_history(request):
+    return render(request,'hospitals/hospital_all_code/symptom_history.html')
 
 def prediction_panel(request):
     google_data = request.session.get('social_auth_google-oauth2')

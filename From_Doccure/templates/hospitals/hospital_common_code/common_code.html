@@ -38,7 +38,7 @@
                         <ul class="nav sidebar_inner mx-auto flex-column nav-pills mb-3" id="pills-tab" role="tablist">
                             <!-- symtomp -->
                             <li class="nav-item" role="presentation">
-                                <a href="{% url 'symptom_page' %}" class="nav-link_aside active" ><img src="{% static 'hospital_update_design/asset/images/Icons/IconSetMain.png' %}" alt="">Symtomp</a>
+                                <a href="{% url 'symptom' %}" class="nav-link_aside active" ><img src="{% static 'hospital_update_design/asset/images/Icons/IconSetMain.png' %}" alt="">Symtomp</a>
                             </li>
                             <!-- Symtomp history -->
                             <li class="nav-item" role="presentation">
@@ -105,7 +105,9 @@
 
     <!-------------- Custom js ------------>
     <script src="{% static 'hospital_update_design/asset/js/my_location.js' %}"></script>
+    <script  src="{% static 'assets/js/predict.js' %}"></script>
     <script src="{% static 'hospital_update_design/asset/js/script.js' %}"></script>
+    
     
 
 </body>

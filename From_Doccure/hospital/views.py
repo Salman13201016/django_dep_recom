@@ -134,10 +134,7 @@ def get_nearby_hospitals(your_latitude, your_longitude, max_distance=10):
 
     return data
 
-def hospitals_symptom_page(request):
-    return render(request,'hospitals/hospital_all_code/symptom_page.html')
-def hospitals_symptom_history(request):
-    return render(request,'hospitals/hospital_all_code/symptom_history.html')
+
 
 # def hospitals_common_page(request):
 #     return render(request,'hospitals/hospital_common_code/common_code.html')
