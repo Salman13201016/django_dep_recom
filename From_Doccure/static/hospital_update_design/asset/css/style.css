@@ -788,6 +788,20 @@ color: var(--black30);
     margin: auto .5rem;
     transition: all .3s;
 }
+
+.popup_body .inner_btns a{
+    background: var(--blue);
+    color: var(--white);
+    outline-color: transparent;
+    border: .1rem solid var(--blue);
+    border-radius: .5rem;
+    padding: 0.4rem 2rem;
+    font-size: 14px;
+    font-weight: 700;
+    margin: auto .5rem;
+    transition: all .3s;
+    text-decoration: none;
+}
 .popup_body .inner_btns .btn_no{
     background: var(--white) !important;
     color: var(--blue) !important;
@@ -798,6 +812,11 @@ color: var(--black30);
     color: var(--white) !important;
 }
 .popup_body .inner_btns button:hover{
+    background: var(--white);
+    color: var(--blue);
+}
+
+.popup_body .inner_btns a:hover{
     background: var(--white);
     color: var(--blue);
 }

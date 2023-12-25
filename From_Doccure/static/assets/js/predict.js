@@ -59,7 +59,7 @@ $(document).ready(function () {
 
             // var cls = cls[i + 2];
             var currentClassName = $(this).attr('class').split(' ')[3];
-            alert(currentClassName)
+            // alert(currentClassName)
 
 
             var match = currentClassName.match(/\d+/);
