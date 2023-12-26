@@ -5,33 +5,71 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.http import JsonResponse
 from django.db.models import Q
+from . models import Department_history_prediction
 
 
 # import tensorflow as tf
 
 # Create your views here.
+
 def hospitals_symptom_page(request):
-    data_symptom1 = Symptom.objects.values_list('symptom1',flat=True).distinct()
-    data_symptom2 = Symptom.objects.values_list('symptom2',flat=True).distinct()    
-    data_symptom3 = Symptom.objects.values_list('symptom3',flat=True).distinct()    
-    data_symptom4 = Symptom.objects.values_list('symptom4',flat=True).distinct()    
-    data_symptom5 = Symptom.objects.values_list('symptom5',flat=True).distinct()    
-    data_symptom6 = Symptom.objects.values_list('symptom6',flat=True).distinct()    
-    data_symptom7 = Symptom.objects.values_list('symptom7',flat=True).distinct()    
-    data_symptom8 = Symptom.objects.values_list('symptom8',flat=True).distinct()    
-    data_symptom9 = Symptom.objects.values_list('symptom9',flat=True).distinct()    
-    data_symptom10 = Symptom.objects.values_list('symptom10',flat=True).distinct()    
-    data_symptom11 = Symptom.objects.values_list('symptom11',flat=True).distinct()    
-    data_symptom12 = Symptom.objects.values_list('symptom12',flat=True).distinct()    
-    data_symptom13 = Symptom.objects.values_list('symptom13',flat=True).distinct()    
-    data_symptom14 = Symptom.objects.values_list('symptom14',flat=True).distinct()    
-    data_symptom15 = Symptom.objects.values_list('symptom15',flat=True).distinct()    
-    data_symptom16 = Symptom.objects.values_list('symptom16',flat=True).distinct()   
-    data_symptom17 = Symptom.objects.values_list('symptom17',flat=True).distinct()    
-    context = {'symptom_data1':data_symptom1,"symptom_data2":data_symptom2,"symptom_data3":data_symptom3,"symptom_data4":data_symptom4,"symptom_data5":data_symptom5,"symptom_data6":data_symptom6,"symptom_data7":data_symptom7,"symptom_data8":data_symptom8,"symptom_data9":data_symptom9,"symptom_data10":data_symptom10,"symptom_data11":data_symptom11,"symptom_data12":data_symptom12,"symptom_data13":data_symptom13,"symptom_data14":data_symptom14,"symptom_data15":data_symptom15,"symptom_data16":data_symptom16,"symptom_data17":data_symptom17}
-    return render(request,'hospitals/hospital_all_code/symptom_page.html',context)
+    
+    data_symptom1 = Symptom.objects.values_list('symptom1',flat=True).distinct().order_by('-id')
+    data_symptom2 = Symptom.objects.values_list('symptom2',flat=True).distinct().order_by('-id')    
+    data_symptom3 = Symptom.objects.values_list('symptom3',flat=True).distinct().order_by('-id')    
+    data_symptom4 = Symptom.objects.values_list('symptom4',flat=True).distinct().order_by('-id')    
+    data_symptom5 = Symptom.objects.values_list('symptom5',flat=True).distinct().order_by('-id')    
+    data_symptom6 = Symptom.objects.values_list('symptom6',flat=True).distinct().order_by('-id')    
+    data_symptom7 = Symptom.objects.values_list('symptom7',flat=True).distinct().order_by('-id')    
+    data_symptom8 = Symptom.objects.values_list('symptom8',flat=True).distinct().order_by('-id')    
+    data_symptom9 = Symptom.objects.values_list('symptom9',flat=True).distinct().order_by('-id')    
+    data_symptom10 = Symptom.objects.values_list('symptom10',flat=True).distinct().order_by('-id')    
+    data_symptom11 = Symptom.objects.values_list('symptom11',flat=True).distinct().order_by('-id')    
+    data_symptom12 = Symptom.objects.values_list('symptom12',flat=True).distinct().order_by('-id')    
+    data_symptom13 = Symptom.objects.values_list('symptom13',flat=True).distinct().order_by('-id')    
+    data_symptom14 = Symptom.objects.values_list('symptom14',flat=True).distinct().order_by('-id')    
+    data_symptom15 = Symptom.objects.values_list('symptom15',flat=True).distinct().order_by('-id')    
+    data_symptom16 = Symptom.objects.values_list('symptom16',flat=True).distinct().order_by('-id')   
+    data_symptom17 = Symptom.objects.values_list('symptom17',flat=True).distinct().order_by('-id')
+    
+    uid=''
+    context = {'symptom_data1':data_symptom1,"symptom_data2":data_symptom2,"symptom_data3":data_symptom3,"symptom_data4":data_symptom4,"symptom_data5":data_symptom5,"symptom_data6":data_symptom6,"symptom_data7":data_symptom7,"symptom_data8":data_symptom8,"symptom_data9":data_symptom9,"symptom_data10":data_symptom10,"symptom_data11":data_symptom11,"symptom_data12":data_symptom12,"symptom_data13":data_symptom13,"symptom_data14":data_symptom14,"symptom_data15":data_symptom15,"symptom_data16":data_symptom16,"symptom_data17":data_symptom17,'uid':''}
+    google_data = request.session.get('social_auth_google-oauth2')
+    if google_data:
+
+        uid = google_data.get('uid')
+        context['uid'] = uid   
+        
+        return render(request,'hospitals/hospital_all_code/symptom_page.html',context)
+        
+    elif 'user_id' in request.session:
+        uid = request.session['user_id'] 
+        context['uid'] = uid     
+    
+        return render(request,'hospitals/hospital_all_code/symptom_page.html',context)
+    else:
+        return redirect('aut_login')
 def hospitals_symptom_history(request):
-    return render(request,'hospitals/hospital_all_code/symptom_history.html')
+    google_data = request.session.get('social_auth_google-oauth2')
+    
+    
+    if google_data:
+
+        uid = google_data.get('uid')
+        result = Department_history_prediction.objects.filter(uid=uid).values('selected_dept', 'dept_status', 'date_time')
+        context = {'result':result}
+        return render(request,'hospitals/hospital_all_code/symptom_history.html',context)
+        
+    elif 'user_id' in request.session:
+        uid = request.session['user_id'] 
+        result = Department_history_prediction.objects.filter(uid=uid).values('selected_dept', 'dept_status', 'date_time')
+        context = {'result':result}  
+    
+        return render(request,'hospitals/hospital_all_code/symptom_history.html',context)
+    else:
+        result = Department_history_prediction.objects.values('selected_dept', 'dept_status', 'date_time')
+        context = {'result':result}
+        return render(request,'hospitals/hospital_all_code/symptom_history.html',context)
 
 def prediction_panel(request):
     google_data = request.session.get('social_auth_google-oauth2')
@@ -290,15 +328,26 @@ def prediction_store(request):
         return render(request,'form/Prediction/prediction.html')
     
 from . models import Department_history_prediction
+from datetime import datetime
+
+
 def prediction_history_store(request):
     selected_dept = request.GET.get('dept')
     predicted_dept = request.GET.get('depart_status')
     final_result = request.GET.get('final_result')
+    uid = request.GET.get('uid')
+    # Get the current date and time
+    current_datetime = datetime.now()
+
+    # Format the date and time as "12 Aug 2022 - 12:25 am"
+    formatted_datetime = current_datetime.strftime("%d %b %Y - %I:%M %p")
 
     history = Department_history_prediction()
     history.selected_dept = selected_dept
     history.dept_status = predicted_dept
     history.final_result = final_result
+    history.uid = uid
+    history.date_time = formatted_datetime
 
     history.save()
     return JsonResponse({'message':"success"})

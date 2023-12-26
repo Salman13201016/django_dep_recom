@@ -38,21 +38,21 @@
                         <ul class="nav sidebar_inner mx-auto flex-column nav-pills mb-3" id="pills-tab" role="tablist">
                             <!-- symtomp -->
                             <li class="nav-item" role="presentation">
-                                <a href="{% url 'symptom' %}" class="nav-link_aside active" ><img src="{% static 'hospital_update_design/asset/images/Icons/IconSetMain.png' %}" alt="">Symtomp</a>
+                                <a href="{% url 'symptom' %}" class="nav-link_aside active" ><img src="{% static 'hospital_update_design/asset/images/Icons/IconSetMain.png' %}" alt="">Symtomp Check</a>
                             </li>
                             <!-- Symtomp history -->
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation" >
                                 <a href="{% url 'symptom_history' %}" class="nav-link_aside"><img src="{% static 'hospital_update_design/asset/images/Icons/Vector.png' %}" alt=""> Symptom History</a>
                             </li>
 
                             <!---------- Hospitals -------->
                             <li class="nav-item" role="presentation">
-                                <a href="{% url 'hospital_details' %}" class="nav-link_aside" id="getNearbyHospitals"><img src="{% static 'hospital_update_design/asset/images/Icons/IconSet.png' %}" alt=""> Hospitals</a>
+                                <a href="{% url 'hospital_details' %}" class="nav-link_aside" id="getNearbyHospitals"><img src="{% static 'hospital_update_design/asset/images/Icons/IconSet.png' %}" alt=""> Nearest Hospital</a>
                             </li>
 
-                            <li class="nav-item" role="presentation">
+                            <!-- <li class="nav-item" role="presentation">
                                 <a href="#" class="nav-link_aside"><img src="{% static 'hospital_update_design/asset/images/Icons/IconSet.png' %}" alt=""> Doctor Profile</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -107,6 +107,26 @@
     <script src="{% static 'hospital_update_design/asset/js/my_location.js' %}"></script>
     <script  src="{% static 'assets/js/predict.js' %}"></script>
     <script src="{% static 'hospital_update_design/asset/js/script.js' %}"></script>
+    <script>
+        if(localStorage.getItem('index')){
+            index = localStorage.getItem('index')
+        }
+        else{
+            index = 0
+        }
+        $('.nav-item a').removeClass('active')
+        $('.nav-item a:eq('+index+')').addClass('active')
+        $('.nav-item a').each(function(i){
+
+           $(this).click(function(e){
+                // alert(i)
+                // e.preventDefault()
+                localStorage.setItem('index',i)
+                
+                // $(this).addClass('active')
+           })
+        })
+    </script>
     
     
 
