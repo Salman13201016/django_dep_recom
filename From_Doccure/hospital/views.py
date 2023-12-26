@@ -46,6 +46,7 @@ from django.http import JsonResponse
 from django.conf import settings  
 from django.core.serializers import serialize    
 def hospitals_index_page(request):
+    google_data = request.session.get('social_auth_google-oauth2')
     user_latitude=''
     user_longitude=''
     if(request.method =='GET'):
@@ -56,7 +57,17 @@ def hospitals_index_page(request):
             nearby_hospitals = get_nearby_hospitals(float(user_latitude), float(user_longitude))
             if len(nearby_hospitals)!=0:
                 
-                return JsonResponse({'nearby_hospitals': nearby_hospitals,'near_status':1})
+                print(google_data)
+                if google_data:
+                    print(3)
+                
+                    return JsonResponse({'nearby_hospitals': nearby_hospitals,'near_status':1})
+                elif 'user_id' in request.session:
+                    print(3)
+                
+                    return JsonResponse({'nearby_hospitals': nearby_hospitals,'near_status':1})
+                else:
+                    return redirect('aut_login')
 
             else:
                 # The queryset is empty, there are no nearby hospitals
@@ -69,7 +80,19 @@ def hospitals_index_page(request):
                     'near_status': 0,
                     'nearby_hospitals': data,
                 }
-                return JsonResponse({'nearby_hospitals': context})
+                google_data = request.session.get('social_auth_google-oauth2')
+                print(google_data)
+                if google_data:
+                    print(3)
+                
+                    return JsonResponse({'nearby_hospitals': context})
+                elif 'user_id' in request.session:
+                    print(3)
+                
+                    return JsonResponse({'nearby_hospitals': context})
+                else:
+                   return JsonResponse({'nearby_hospitals': context})
+                
                 
             # Convert the queryset to a list of dictionaries
             # hospitals_list = list(nearby_hospitals.values())
@@ -93,7 +116,17 @@ def hospitals_index_page(request):
                 'hospital_data':hospital_data,
                 
                 }
-            return render(request,'hospitals/hospital_all_code/index.html')    
+            if google_data:
+                print(3)
+            
+                return render(request,'hospitals/hospital_all_code/index.html') 
+            elif 'user_id' in request.session:
+                print(3)
+            
+                return render(request,'hospitals/hospital_all_code/index.html') 
+            else:
+                return render(request,'hospitals/hospital_all_code/index.html') 
+               
     
 
     # Calculate and retrieve nearby hospitals (you can use the previously provided function)

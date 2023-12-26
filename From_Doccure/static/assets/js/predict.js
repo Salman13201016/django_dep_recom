@@ -185,6 +185,8 @@ $(document).ready(function () {
         var dataArray = [];
         dept_status = ''
         final_result = ''
+        uid = $('#uid').val()
+        // alert(uid)
 
         // Loop through selected values and create an object for each
         // $.each(selectedValues, function (index, value) {
@@ -208,60 +210,60 @@ $(document).ready(function () {
                 $('.result_pred').val(data.status)
 
 
-                // $.ajax({
-                //     url: '/prediction/send_history_data/',
-                //     method: 'GET',
-                //     data: { 'dept': resultString, 'depart_status': dept_status, 'final_result': final_result },
-                //     contentType: "application/json; charset=utf-8",
-                //     dataType: 'json',
-                //     success: function (data) {
+                $.ajax({
+                    url: '/prediction/send_history_data/',
+                    method: 'GET',
+                    data: { 'dept': resultString, 'depart_status': dept_status, 'final_result': final_result, 'uid': uid },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (data) {
 
-                //         // Process the data as needed
-                //         console.log(data.message);
-                //         // dept_status = data.status
-                //         // final_result = "Based on your selected symptom we would like to recommend you to visit the department: " + data.status
-                //         // $('.result_pred').show()
-                //         // $('.result_pred').text("Based on your selected symptom we would like to recommend you to visit the department: " + data.status)
-                //         // var symptomData = data.data[0];
-                //         // console.log(symptomData)
-                //         // var selectBox = $('.' + newContent);  // Replace with the actual ID of your select box
-                //         // selectBox.empty();  // Clear previous options
-                //         // var yourVariable = "I don't have something";
+                        // Process the data as needed
+                        console.log(data.message);
+                        // dept_status = data.status
+                        // final_result = "Based on your selected symptom we would like to recommend you to visit the department: " + data.status
+                        // $('.result_pred').show()
+                        // $('.result_pred').text("Based on your selected symptom we would like to recommend you to visit the department: " + data.status)
+                        // var symptomData = data.data[0];
+                        // console.log(symptomData)
+                        // var selectBox = $('.' + newContent);  // Replace with the actual ID of your select box
+                        // selectBox.empty();  // Clear previous options
+                        // var yourVariable = "I don't have something";
 
-                //         // if (yourVariable.indexOf("I don't have") !== -1) {
-                //         //     // The string "I don't have" is present in yourVariable
-                //         //     console.log("The string is present.");
-                //         // } else {
-                //         //     // The string is not present in yourVariable
-                //         //     console.log("The string is not present.");
-                //         // }
+                        // if (yourVariable.indexOf("I don't have") !== -1) {
+                        //     // The string "I don't have" is present in yourVariable
+                        //     console.log("The string is present.");
+                        // } else {
+                        //     // The string is not present in yourVariable
+                        //     console.log("The string is not present.");
+                        // }
 
-                //         // for (i = 0; i < data.data.length; i++) {
-                //         //     var symptomData = data.data[i];
-                //         //     // console.log(symptomData)
-                //         //     for (j = 1; j < 18; j++) {
-                //         //         console.log(j)
-                //         //         var symptomValue = symptomData['symptom' + j];
-                //         //         if (symptomValue == selectedOption2 || symptomValue.indexOf("I don't have") !== -1 || $.inArray(symptomValue, sym_array) !== -1) {
-                //         //             console.log("okay")
-                //         //             continue;
-                //         //         }
-                //         //         else {
-                //         //             // console.log(symptomValue)
-                //         //             selectBox.append($('<option>', {
-                //         //                 value: symptomValue,
-                //         //                 text: symptomValue
-                //         //             }));
-                //         //         }
+                        // for (i = 0; i < data.data.length; i++) {
+                        //     var symptomData = data.data[i];
+                        //     // console.log(symptomData)
+                        //     for (j = 1; j < 18; j++) {
+                        //         console.log(j)
+                        //         var symptomValue = symptomData['symptom' + j];
+                        //         if (symptomValue == selectedOption2 || symptomValue.indexOf("I don't have") !== -1 || $.inArray(symptomValue, sym_array) !== -1) {
+                        //             console.log("okay")
+                        //             continue;
+                        //         }
+                        //         else {
+                        //             // console.log(symptomValue)
+                        //             selectBox.append($('<option>', {
+                        //                 value: symptomValue,
+                        //                 text: symptomValue
+                        //             }));
+                        //         }
 
-                //         //     }
-                //         // }
-                //     },
-                //     error: function (error) {
-                //         $('.result_pred').hide()
-                //         console.error('Error:', error);
-                //     }
-                // });
+                        //     }
+                        // }
+                    },
+                    error: function (error) {
+                        $('.result_pred').hide()
+                        console.error('Error:', error);
+                    }
+                });
                 // var symptomData = data.data[0];
                 // console.log(symptomData)
                 // var selectBox = $('.' + newContent);  // Replace with the actual ID of your select box

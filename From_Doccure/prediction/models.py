@@ -7,4 +7,6 @@ class Department_history_prediction(models.Model):
    selected_dept = models.CharField(max_length=500)
    dept_status = models.CharField(max_length=500)
    final_result = models.CharField(max_length=500)
+   uid = models.CharField(max_length=500)
+   date_time = models.CharField(max_length=500)
     

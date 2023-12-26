@@ -10,7 +10,7 @@ $(document).ready(function () {
                 longitude: userLongitude
             }, function (response) {
                 console.log(response)
-                $('.h_list_single').empty()
+                $('.h_list_ul').empty()
                 if (response.near_status == 1) {
                     response.nearby_hospitals.forEach(function (hospital) {
                         console.log(`Hospital ID: ${hospital.id}`);
@@ -22,7 +22,7 @@ $(document).ready(function () {
                         console.log(`Longitude: ${hospital.long}`);
                         console.log(`Distance: ${hospital.distance} km`);
                         console.log("------");
-                        div_str = `<div class="h_single_content">
+                        div_str = `<li class="h_list_single"><div class="h_single_content">
                         <div class="h_photo_data">
                             <div class="h_photo">
                                 <img src="`+ hospital.image + `" alt="">
@@ -56,8 +56,8 @@ $(document).ready(function () {
                     </div>
                     <div class="h_single_btn">
                         <a class="btn_blue" href="`+ hospital.description + `" target="_blank">View Hospital</a>
-                    </div>`
-                        $('.h_list_single').append(div_str)
+                    </div></li>`
+                        $('.h_list_ul').append(div_str)
                     });
                 }
                 else {
@@ -71,7 +71,7 @@ $(document).ready(function () {
                         console.log(`Longitude: ${hospital.long}`);
                         console.log(`Distance: ${hospital.distance} km`);
                         console.log("------");
-                        div_str = `<div class="h_single_content">
+                        div_str = `<li class="h_list_single"><div class="h_single_content">
                         <div class="h_photo_data">
                             <div class="h_photo">
                                 <img src="`+ hospital.image + `" alt="">
@@ -105,8 +105,8 @@ $(document).ready(function () {
                     </div>
                     <div class="h_single_btn">
                         <a class="btn_blue" href="`+ hospital.description + `" target="_blank">View Hospital</a>
-                    </div>`
-                        $('.h_list_single').append(div_str)
+                    </div></li>`
+                        $('.h_list_ul').append(div_str)
                     });
                 }
 
@@ -157,7 +157,7 @@ $(document).ready(function () {
                         longitude: userLongitude
                     }, function (response) {
                         console.log(response)
-                        $('.h_list_single').empty()
+                        $('.h_list_ul').empty()
                         if (response.near_status == 1) {
                             response.nearby_hospitals.forEach(function (hospital) {
                                 console.log(`Hospital ID: ${hospital.id}`);
@@ -169,7 +169,7 @@ $(document).ready(function () {
                                 console.log(`Longitude: ${hospital.long}`);
                                 console.log(`Distance: ${hospital.distance} km`);
                                 console.log("------");
-                                div_str = `<div class="h_single_content">
+                                div_str = `<li class="h_list_single"><div class="h_single_content">
                             <div class="h_photo_data">
                                 <div class="h_photo">
                                     <img src="`+ hospital.image + `" alt="">
@@ -203,8 +203,8 @@ $(document).ready(function () {
                         </div>
                         <div class="h_single_btn">
                             <a class="btn_blue" href="`+ hospital.description + `" target="_blank">View Hospital</a>
-                        </div>`
-                                $('.h_list_single').append(div_str)
+                        </div></li>`
+                                $('.h_list_ul').append(div_str)
                             });
                         }
                         else {
@@ -218,7 +218,8 @@ $(document).ready(function () {
                                 console.log(`Longitude: ${hospital.long}`);
                                 console.log(`Distance: ${hospital.distance} km`);
                                 console.log("------");
-                                div_str = `<div class="h_single_content">
+                                div_str = `<li class="h_list_single">
+                                <div class="h_single_content">
                             <div class="h_photo_data">
                                 <div class="h_photo">
                                     <img src="`+ hospital.image + `" alt="">
@@ -252,8 +253,8 @@ $(document).ready(function () {
                         </div>
                         <div class="h_single_btn">
                             <a class="btn_blue" href="`+ hospital.description + `" target="_blank">View Hospital</a>
-                        </div>`
-                                $('.h_list_single').append(div_str)
+                        </div></li>`
+                                $('.h_list_ul').append(div_str)
                             });
                         }
 
