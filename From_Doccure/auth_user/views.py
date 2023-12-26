@@ -164,7 +164,7 @@ def login_auth_panel(request):
                 print(user)
 
 
-                if user.password==password:
+                if user.password==password and user.v_status=='1':
                     print(6)
                     request.session['user_id'] = user.id
                     request.session['user_email'] = user.email
