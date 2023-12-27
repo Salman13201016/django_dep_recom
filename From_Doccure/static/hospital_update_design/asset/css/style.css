@@ -475,6 +475,31 @@ img{
     padding: .1px 0.2rem;
     border-radius: .5rem;
 }
+.pagination-container {
+    text-align: center; /* Center the pagination */
+}
+
+#pagination {
+    display: inline-block; /* Ensure inline-block display for the pagination links */
+    margin-left: 50px; /* Add some right margin to move it a bit to the right */
+    margin-top: -37px;
+}
+.quantity-filter {
+    margin-top: 5px;
+    margin-left: 50px;
+}
+
+.form-inline .form-control {
+    width: auto;
+    margin-right: 10px;
+}
+
+.list-group-item {
+    border: 1px solid #dee2e6;
+    margin-bottom: 10px;
+}
+
+
 .h_paginate .h_paginate_list .pnr span{
     font-size: 14px;
     font-weight: 700;
