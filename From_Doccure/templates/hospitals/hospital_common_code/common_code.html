@@ -38,7 +38,7 @@
                         <ul class="nav sidebar_inner mx-auto flex-column nav-pills mb-3" id="pills-tab" role="tablist">
                             <!-- symtomp -->
                             <li class="nav-item" role="presentation">
-                                <a href="{% url 'symptom' %}" class="nav-link_aside active" ><img src="{% static 'hospital_update_design/asset/images/Icons/IconSetMain.png' %}" alt="">Symtomp Check</a>
+                                <a href="{% url 'symptom' %}" class="nav-link_aside active" ><img src="{% static 'hospital_update_design/asset/images/Icons/IconSetMain.png' %}" alt="">Symptoms Check</a>
                             </li>
                             <!-- Symtomp history -->
                             <li class="nav-item" role="presentation" >
@@ -47,7 +47,7 @@
 
                             <!---------- Hospitals -------->
                             <li class="nav-item" role="presentation">
-                                <a href="{% url 'hospital_details' %}" class="nav-link_aside" id="getNearbyHospitals"><img src="{% static 'hospital_update_design/asset/images/Icons/IconSet.png' %}" alt=""> Nearest Hospital</a>
+                                <a href="{% url 'hospital_details' %}" class="nav-link_aside" id="getNearbyHospitals"><img src="{% static 'hospital_update_design/asset/images/Icons/IconSet.png' %}" alt=""> Nearest Hospitals</a>
                             </li>
 
                             <!-- <li class="nav-item" role="presentation">
@@ -108,6 +108,7 @@
     <script  src="{% static 'assets/js/predict.js' %}"></script>
     <script src="{% static 'hospital_update_design/asset/js/script.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script>
         if(localStorage.getItem('index')){
             index = localStorage.getItem('index')

@@ -47,10 +47,10 @@ $(document).ready(function () {
     // }
 
     $('select').each(function (i) {
-        // $('#select_22').select2({
-        //     theme: 'bootstrap4', // Use the Bootstrap 4 theme
-        //     width: '100%',       // Set the width of the select box
-        // });
+        $('#select_22').select2({
+            theme: 'bootstrap4', // Use the Bootstrap 4 theme
+            width: '100%',       // Set the width of the select box
+        });
         t = $(this)
         cls = t.attr('class');
 
