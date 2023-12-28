@@ -60,7 +60,7 @@ def hospitals_index_page(request):
                 print(google_data)
                 if google_data:
                     print(3)
-                
+                    
                     return JsonResponse({'nearby_hospitals': nearby_hospitals,'near_status':1})
                 elif 'user_id' in request.session:
                     print(3)
