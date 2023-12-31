@@ -53,18 +53,18 @@ def department_name_store(request):
         name = request.POST.get('depat_name')
         if (len(name) < 4 ):
             messages.error(request, 'minimum 4')
-            return redirect('/home/')
+            return redirect('/home_page/')
         
         if models.Doctor_Depert_name.objects.filter(name=name).exists():
             messages.info(request, 'Department name already exists.')
-            return redirect('/home/')
+            return redirect('/home_page/')
         
         else:
             depar_model = models.Doctor_Depert_name()
             depar_model.name = name
             depar_model.save()
             messages.success(request, 'The Department name hase been inserted Successfully')
-            return redirect('/home/')
+            return redirect('/home_page/')
             # return render(request,'form/form-basic-inputs.html')
     except (IntegrityError) as e: 
         messages.error(request, 'The Department name hase been inserted Successfully')

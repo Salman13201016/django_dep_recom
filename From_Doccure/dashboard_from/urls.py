@@ -6,7 +6,7 @@ from . import views as disease
 
 
 urlpatterns = [
-    path('', department.name_panel,name='home'),
+    path('', department.name_panel,name='home_page'),
     path('home/', department.dep_name_panel,name='department'),
     path('store/', department.department_name_store,name='department_stor'),
     path('store/edit/<int:id>', department.edit_depart_name,name='edit_depar'),
