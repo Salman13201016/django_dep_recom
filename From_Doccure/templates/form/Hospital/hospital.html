@@ -1,6 +1,6 @@
 {% extends 'common_code/base_code.html' %}
 {% load static %}
-{% block title %} Hospital {% endblock title %}
+{% block title %} Hospital Category {% endblock title %}
 
 {% block content %}
 			
@@ -32,7 +32,7 @@
 									  {% csrf_token %}
 									  <div class="form-group">
 										<label for="exampleInputName1"><h5 >Hospital Category</h5></label>
-										<input type="text" class="form-control" id="exampleInputName1" placeholder="Hospital Name" name="hos_cat">
+										<input type="text" class="form-control" id="exampleInputName1" placeholder="Hospital Category" name="hos_cat">
 									  </div>
 									  <button type="submit" class="btn btn-primary me-2">Submit</button>
 									</form>
@@ -48,7 +48,7 @@
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Hospital Information</h4>
+									<h4 class="card-title">Hospital Category Information</h4>
 									
 								</div>
 								<div class="card-body">
@@ -58,7 +58,7 @@
 											<thead>
 												<tr>
 													<th>ID</th>
-													<th>Hospital Name</th>
+													<th>Hospital Category</th>
 													<th>Action</th>
 													
 												</tr>

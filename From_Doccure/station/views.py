@@ -9,14 +9,16 @@ from django.db import IntegrityError
 # Create your views here.
 
 def station_panel(request):
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
     # if 'user_id' in request.session:
         divi_data = Division_Name.objects.all()   
         dis_data = District_Name.objects.all()   
         station_data = Station.objects.all()   
         context = {"dist_data":dis_data, 'divi_data':divi_data,'station_data':station_data}
-    # else:
-    #     return redirect('aut_login')
-        return render(request,'form/Station/station.html',context)
+    else:
+        return redirect('aut_login')
+    return render(request,'form/Station/station.html',context)
 
 def station_store(request): 
     try:
@@ -43,17 +45,28 @@ def edit_station(request, id):
     return render(request,'form/Station/station_edit.html',context)
 
 def update_edit_station(request):
-    id = request.POST.get('id')
-    data = get_object_or_404(Station, id=id)  
-    station = request.POST.get('station_name')
-    data.station = station
-    data.save()
-    return redirect('/station/')
+    try:
+        
+        id = request.POST.get('id')
+        data = get_object_or_404(Station, id=id)  
+        station = request.POST.get('station_name')
+        data.station = station
+        messages.success(request, 'The Station name hase been updated  Successfully')
+        data.save()
+        return redirect('/station/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Station name hase been updated  Successfully')   
+        return render(request,'form/Station/station.html')
 
 
 def delete_station(request, id):
-    data = get_object_or_404(Station, id=id)
-    data.delete()
-    return redirect('/station/')  
+    try:
+        data = get_object_or_404(Station, id=id)
+        data.delete()
+        messages.success(request, 'The Station name hase been deleted Successfully')
+        return redirect('/station/') 
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Station name hase been deleted Successfully')   
+        return render(request,'form/Station/station.html') 
 
 

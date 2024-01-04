@@ -42,15 +42,24 @@ def edit_division(request, id):
     return render(request,'form/Division/division_edit.html',context)
 
 def update_edit_division(request):
-    id = request.POST.get('id')
-    data = get_object_or_404(Division_Name, id=id)  
-    division = request.POST.get('divi_name')
-    data.division = division
-    data.save()
-    return redirect('/division/')
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(Division_Name, id=id)  
+        division = request.POST.get('divi_name')
+        data.division = division
+        data.save()
+        messages.success(request, 'The Division name hase been updated Successfully')
+        return redirect('/division/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Division name hase been updated Successfully')
 
 
 def delete_division(request, id):
-    data = get_object_or_404(Division_Name, id=id)
-    data.delete()
-    return redirect('/division/')  
+    try:
+        data = get_object_or_404(Division_Name, id=id)
+        data.delete()
+        messages.success(request, 'The Division name hase been deleted Successfully')
+        return redirect('/division/') 
+    except (IntegrityError) as e: 
+            messages.error(request, 'The Hospital_map name hase been deleted Successfully')   
+        

@@ -79,17 +79,25 @@ def edit_depart_name(request, id):
     return render(request,'form/Department/edit.html',context)
 
 def update(request):
-    id = request.POST.get('id')
-    data = get_object_or_404(Doctor_Depert_name, id=id)  
-    name = request.POST.get('depat_name')
-    data.name = name
-    data.save()
-    return redirect('/hm/home/')
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(Doctor_Depert_name, id=id)  
+        name = request.POST.get('depat_name')
+        data.name = name
+        data.save()
+        messages.success(request, 'The Department name hase been updated Successfully')
+        return redirect('/hm/home/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Department name hase been updated Successfully')
 
 def delete(request, id):
-    data = get_object_or_404(Doctor_Depert_name, id=id)
-    data.delete()
-    return redirect('/hm/home/')
+    try:
+        data = get_object_or_404(Doctor_Depert_name, id=id)
+        data.delete()
+        messages.success(request, 'The Department name hase been deleted Successfully')
+        return redirect('/hm/home/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Department name hase been deleted Successfully')
 
 #Department End
 
@@ -138,18 +146,30 @@ def edit_disease(request, id):
     return render(request,'form/Disease/edit.html',context)
 
 def update_disease(request):
-    id = request.POST.get('id')
-    data = get_object_or_404(Sub_Disease, id=id)  
-    name = request.POST.get('disease_name')
-    data.name = name
-    data.save()
-    return redirect('/hm/di_panel/')
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(Sub_Disease, id=id)  
+        name = request.POST.get('disease_name')
+        data.name = name
+        data.save()
+        messages.success(request, 'The Disease name hase been updated Successfully')
+        return redirect('/hm/di_panel/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Disease name hase been updated Successfully')
+        
+        return redirect('/hm/di_panel/')
 
 
 def delete_disease(request, id):
-    data = get_object_or_404(Sub_Disease, id=id)
-    data.delete()
-    return redirect('/hm/di_panel/')
+    try:
+        data = get_object_or_404(Sub_Disease, id=id)
+        data.delete()
+        messages.success(request, 'The Disease name hase been deleted Successfully')
+        return redirect('/hm/di_panel/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Disease name hase been deleted Successfully')
+        
+        return redirect('/hm/di_panel/')
 
     
 # def delete_disease(request, id):

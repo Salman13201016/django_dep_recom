@@ -42,15 +42,27 @@ def edit_district(request, id):
     return render(request,'form/District/district_edit.html',context)
 
 def update_edit_district(request):
-    id = request.POST.get('id')
-    data = get_object_or_404(District_Name, id=id)  
-    district = request.POST.get('district_name')
-    data.district = district
-    data.save()
-    return redirect('/district/')
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(District_Name, id=id)  
+        district = request.POST.get('district_name')
+        data.district = district
+        messages.success(request, 'The District name hase been updated Successfully')
+        data.save()
+        return redirect('/district/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The District name hase been updated Successfully')
+        
+        return redirect('/district/') 
 
 
 def delete_district(request, id):
-    data = get_object_or_404(District_Name, id=id)
-    data.delete()
-    return redirect('/district/')  
+    try:
+        data = get_object_or_404(District_Name, id=id)
+        data.delete()
+        messages.success(request, 'The District name hase been deleted Successfully')
+        return redirect('/district/') 
+    except (IntegrityError) as e: 
+        messages.error(request, 'The District name hase been deleted Successfully')
+        return redirect('/district/') 
+     

@@ -33,7 +33,7 @@
                                         <div class="form-group">
                                             <label for="exampleSelectGender">Select Hospital Name</label>			
                                               <select class="form-control" id="exampleSelectGender" name="hos_fk">
-                                                <option>Select Hospital</option>
+                                                <option>Select Hospital Name</option>
                                                 {% for hos_map in map_data %}
                                                 <option value="{{ hos_map.id }}">{{ hos_map.hos_name }}</option>
                                                 {% endfor %}
@@ -59,7 +59,58 @@
 							
 						</div>
 					</div>
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Hospital Map Information</h4>
+									
+								</div>
+								<div class="card-body">
+		
+									<div class="table-responsive">
+										<table class="datatable table table-stripped">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>Longitude</th>
+													<th>Latitude</th>
+													<th>Action</th>
+													
+												</tr>
+											</thead>
+											<tbody>
+												{% for table_data in hospital_map_data %}
+												<tr class="table-info">
+												  <td>
+													{{ forloop.counter }}
+												  </td>
+												  <td>
+													{{table_data.longitude}}
+												  </td>
+												  <td>
+													{{table_data.latitude}}
+												  </td>
+												  
+												  <td>
+													<a  href="{% url 'edit_hospital_map' table_data.id %}">Edit</a>
+													<a  href="{% url 'delete_hospital_map' table_data.id %}">Delete</a>  
+													
+													
+												  </td>
+												</tr>
+												{% endfor %}
+											  </tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				
+
 				</div>			
 			</div>
 			<!-- /Main Wrapper -->

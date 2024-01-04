@@ -41,17 +41,27 @@ def edit_department_details(request, id):
     return render(request,'form/Department_Details/depert_details_edit.html',context)
 
 def update_depart_details(request):
-    id = request.POST.get('id')
-    data = get_object_or_404(department_details, id=id)  
-    put = request.POST.get('put')
-    text = request.POST.get('descrip')
-    data.put = put
-    data.text = text
-    data.save()
-    return redirect('/depart_details/')
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(department_details, id=id)  
+        put = request.POST.get('put')
+        text = request.POST.get('descrip')
+        data.put = put
+        data.text = text
+        data.save()
+        messages.success(request, 'The Department Details name hase been updated  Successfully')
+        return redirect('/depart_details/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Department Details name hase been updated Successfully')   
+        return render(request,'form/Department_Details/department_details.html')
 
 
 def delete_depart_details(request, id):
-    data = get_object_or_404(department_details, id=id)
-    data.delete()
-    return redirect('/depart_details/')
+    try:
+        data = get_object_or_404(department_details, id=id)
+        data.delete()
+        messages.success(request, 'The Department Details name hase been deleted Successfully')
+        return redirect('/depart_details/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Department Details name hase been deleted Successfully')   
+        return render(request,'form/Department_Details/department_details.html')

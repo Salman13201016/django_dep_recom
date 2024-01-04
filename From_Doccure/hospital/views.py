@@ -14,14 +14,15 @@ from hospital_map.models import Hospital_map
 # Create your views here.
 
 def Hospital_Name_panel(request):
-    # if 'user_id' in request.session:
+    google_data = request.session.get('social_auth_google-oauth2')
+    if 'user_id' in request.session or google_data:
         hospital_data = hospital_categories.objects.all()
         storage = messages.get_messages(request)
         storage.used = True
         context = {'hos_data':hospital_data,}
-    # else:
-    #     return redirect('aut_login')
-        return render(request,'form/Hospital/hospital.html', context)
+    else:
+        return redirect('aut_login')
+    return render(request,'form/Hospital/hospital.html', context)
 
 def Hospital_Name_store(request):
     
@@ -51,18 +52,28 @@ def edit_hospital(request, id):
     return render(request,'form/Hospital/hospital_cat_edit.html',context)
 
 def update_edit_hospital(request):
-    id = request.POST.get('id')
-    data = get_object_or_404(hospital_categories, id=id)  
-    hospital_name = request.POST.get('hos_cat')
-    data.hos_cat = hospital_name
-    data.save()
-    return redirect('/hospital/')
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(hospital_categories, id=id)  
+        hospital_name = request.POST.get('hos_cat')
+        data.hos_cat = hospital_name
+        data.save()
+        messages.success(request, 'The Hospital Category hase been updated Successfully')
+        return redirect('/hospital/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Hospital Category hase been updated Successfully')   
+        return render(request,'form/Hospital_map/hospital_map.html')
 
 
 def delete_hospital(request, id):
-    data = get_object_or_404(hospital_categories, id=id)
-    data.delete()
-    return redirect('/hospital/')  
+    try:
+        data = get_object_or_404(hospital_categories, id=id)
+        data.delete()
+        messages.success(request, 'The Hospital Category name hase been deleted Successfully')
+        return redirect('/hospital/') 
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Hospital Category name hase been deleted Successfully')   
+        return render(request,'form/Hospital_map/hospital_map.html') 
 
 
         
