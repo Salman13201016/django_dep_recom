@@ -55,7 +55,55 @@
                     </div> 
                     
                 </div>
-                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Department Details Information</h4>
+                                
+                            </div>
+                            <div class="card-body">
+
+                                <div class="table-responsive">
+                                    <table class="datatable table table-stripped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Put</th>
+                                                <th>Description</th>
+                                                <th>Action</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for table_data in dep_det_data %}
+                                            <tr class="table-info">
+                                              <td>
+                                                {{ forloop.counter }}
+                                              </td>
+                                              <td>
+                                                {{table_data.put}}
+                                              </td>
+                                              <td>
+                                                {{table_data.text}}
+                                              </td>
+                                              
+                                              <td>
+                                                <a  href="{% url 'edit_depart_details' table_data.id %}">Edit</a>
+                                                <a  href="{% url 'delete_depart_details' table_data.id %}">Delete</a>
+                                                
+                                                
+                                              </td>
+                                            </tr>
+                                            {% endfor %}
+                                          </tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     

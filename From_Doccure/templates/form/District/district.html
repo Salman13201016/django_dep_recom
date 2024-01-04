@@ -34,7 +34,7 @@
                                             <label for="exampleSelectGender">Select Division Name</label>			
                                               <select class="form-control" id="exampleSelectGender" name="district_fk">
                                                 <option>Select Division</option>
-                                                {% for data in district_data %}
+                                                {% for data in division_data %}
                                                 <option value="{{ data.id }}">{{ data.division }}</option>
                                                 {% endfor %}
                                               </select>
@@ -52,7 +52,52 @@
 							
 						</div>
 					</div>
-				
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">District Information</h4>
+									
+								</div>
+								<div class="card-body">
+		
+									<div class="table-responsive">
+										<table class="datatable table table-stripped">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>District Name</th>
+													<th>Action</th>
+													
+												</tr>
+											</thead>
+											<tbody>
+												{% for table_data in dist_data %}
+												<tr class="table-info">
+												  <td>
+													{{ forloop.counter }}
+												  </td>
+												  <td>
+													{{table_data.district}}
+												  </td>
+												  
+												  <td>
+													<a  href="{% url 'edit_district' table_data.id %}">Edit</a>
+													<a  href="{% url 'delete_district' table_data.id %}">Delete</a>
+													
+													
+												  </td>
+												</tr>
+												{% endfor %}
+											  </tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				
 				
 				</div>			

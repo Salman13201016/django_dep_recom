@@ -7,7 +7,8 @@ from . import models
 # Create your views here.
 
 def Division_Name_panel(request):
-    divi_data = Division_Name.objects.values('division').distinct()
+    divi_data = Division_Name.objects.all()
+    # divi_data = Division_Name.objects.values('division').distinct()
     storage = messages.get_messages(request)
     storage.used = True
     context = {'division_data':divi_data,}
@@ -31,3 +32,34 @@ def Division_Name_store(request):
             
     except (IntegrityError) as e: 
         messages.error(request, 'The Division name hase been inserted Successfully')
+        
+        
+def edit_division(request, id):
+    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    context={
+        'id':id,
+    }
+    return render(request,'form/Division/division_edit.html',context)
+
+def update_edit_division(request):
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(Division_Name, id=id)  
+        division = request.POST.get('divi_name')
+        data.division = division
+        data.save()
+        messages.success(request, 'The Division name hase been updated Successfully')
+        return redirect('/division/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Division name hase been updated Successfully')
+
+
+def delete_division(request, id):
+    try:
+        data = get_object_or_404(Division_Name, id=id)
+        data.delete()
+        messages.success(request, 'The Division name hase been deleted Successfully')
+        return redirect('/division/') 
+    except (IntegrityError) as e: 
+            messages.error(request, 'The Hospital_map name hase been deleted Successfully')   
+        
