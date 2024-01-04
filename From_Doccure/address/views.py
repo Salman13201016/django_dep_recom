@@ -1,8 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from division.models import Division_Name
 from district.models import District_Name
 from hospital.models import hospital_categories
 from station.models import Station
+from address.models import address_name
 from . import models 
 from django.contrib import messages
 from django.db import IntegrityError
@@ -22,7 +23,8 @@ def address_panel(request):
         dis_data = District_Name.objects.all()   
         hos_data = hospital_categories.objects.all()   
         sta_data = Station.objects.all()   
-        context = {"div_data":divi_data, 'dist_data':dis_data,'hosp_data':hos_data,'stat_data':sta_data}
+        add_data = address_name.objects.all()   
+        context = {"div_data":divi_data, 'dist_data':dis_data,'hosp_data':hos_data,'stat_data':sta_data,'hospital_add_data':add_data}
     else:
         return redirect('aut_login')
     return render(request,'form/Address/address.html',context)
@@ -60,6 +62,43 @@ def address_store(request):
     except (IntegrityError) as e: 
         messages.error(request, 'The Address name hase been inserted Successfully')   
         return render(request,'form/Address/address.html')
+    
+def edit_hospital_address(request, id):
+    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    context={
+        'id':id,
+    }
+    return render(request,'form/Address/hospital_address_edit.html',context)
+
+def update_hospital_address(request):
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(address_name, id=id)  
+        hos_name = request.POST.get('hos_name')
+        zip_code = request.POST.get('zip_code')
+        address = request.POST.get('address')
+        image = request.FILES.get('image')
+        description = request.POST.get('description')
+        data.hos_name = hos_name
+        data.zip_code = zip_code
+        data.address = address
+        data.image = image
+        data.description = description
+        data.save()
+        messages.success(request, 'The Department name hase been updated Successfully')
+        return redirect('/address/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Department name hase been updated Successfully')
+
+
+def delete_hospital_address(request, id):
+    try:
+        data = get_object_or_404(address_name, id=id)
+        data.delete()
+        messages.success(request, 'The Department name hase been deleted Successfully')
+        return redirect('/address/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Department name hase been deleted Successfully')
 
 
 

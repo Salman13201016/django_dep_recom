@@ -53,18 +53,18 @@ def department_name_store(request):
         name = request.POST.get('depat_name')
         if (len(name) < 4 ):
             messages.error(request, 'minimum 4')
-            return redirect('/home/')
+            return redirect('/hm/home/')
         
         if models.Doctor_Depert_name.objects.filter(name=name).exists():
             messages.info(request, 'Department name already exists.')
-            return redirect('/home/')
+            return redirect('/hm/home/')
         
         else:
             depar_model = models.Doctor_Depert_name()
             depar_model.name = name
             depar_model.save()
             messages.success(request, 'The Department name hase been inserted Successfully')
-            return redirect('/home/')
+            return redirect('/hm/home/')
             # return render(request,'form/form-basic-inputs.html')
     except (IntegrityError) as e: 
         messages.error(request, 'The Department name hase been inserted Successfully')
@@ -79,17 +79,25 @@ def edit_depart_name(request, id):
     return render(request,'form/Department/edit.html',context)
 
 def update(request):
-    id = request.POST.get('id')
-    data = get_object_or_404(Doctor_Depert_name, id=id)  
-    name = request.POST.get('depat_name')
-    data.name = name
-    data.save()
-    return redirect('/home/')
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(Doctor_Depert_name, id=id)  
+        name = request.POST.get('depat_name')
+        data.name = name
+        data.save()
+        messages.success(request, 'The Department name hase been updated Successfully')
+        return redirect('/hm/home/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Department name hase been updated Successfully')
 
 def delete(request, id):
-    data = get_object_or_404(Doctor_Depert_name, id=id)
-    data.delete()
-    return redirect('/home/')
+    try:
+        data = get_object_or_404(Doctor_Depert_name, id=id)
+        data.delete()
+        messages.success(request, 'The Department name hase been deleted Successfully')
+        return redirect('/hm/home/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Department name hase been deleted Successfully')
 
 #Department End
 
@@ -99,7 +107,8 @@ def disease_panel(request):
     google_data = request.session.get('social_auth_google-oauth2')
     if 'user_id' in request.session or google_data:
         data2 = Doctor_Depert_name.objects.all()   
-        context = {"disease_data":data2}
+        data3 = Sub_Disease.objects.all()
+        context = {"disease_data":data2, "dise_data":data3}
     else:
         return redirect('aut_login')
     return render(request,'form/Disease/disease.html',context)
@@ -109,11 +118,11 @@ def disease_sub_store(request):
         name = request.POST.get('disease_name')
         if (len(name) < 4 ):
             messages.error(request, 'minimum 4')
-            return redirect('/di_panel/')
+            return redirect('/hm/di_panel/')
         
         if models.Sub_Disease.objects.filter(name=name).exists():
             messages.info(request, 'Disease name already exists.')
-            return redirect('/di_panel/')
+            return redirect('/hm/di_panel/')
         
         else:
             dep_id = request.POST.get('dep_id')
@@ -122,11 +131,56 @@ def disease_sub_store(request):
             sub_model.dep_id_id = dep_id
             sub_model.save()
             messages.success(request, 'The Disease name hase been inserted Successfully')
-            return redirect('/di_panel/')
+            return redirect('/hm/di_panel/')
             
     except (IntegrityError) as e: 
         messages.error(request, 'The Disease name hase been inserted Successfully')
         
-        return redirect('/di_panel/')
+        return redirect('/hm/di_panel/')
+
+def edit_disease(request, id):
+    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    context={
+        'id':id,
+    }
+    return render(request,'form/Disease/edit.html',context)
+
+def update_disease(request):
+    try:
+        id = request.POST.get('id')
+        data = get_object_or_404(Sub_Disease, id=id)  
+        name = request.POST.get('disease_name')
+        data.name = name
+        data.save()
+        messages.success(request, 'The Disease name hase been updated Successfully')
+        return redirect('/hm/di_panel/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Disease name hase been updated Successfully')
+        
+        return redirect('/hm/di_panel/')
+
+
+def delete_disease(request, id):
+    try:
+        data = get_object_or_404(Sub_Disease, id=id)
+        data.delete()
+        messages.success(request, 'The Disease name hase been deleted Successfully')
+        return redirect('/hm/di_panel/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Disease name hase been deleted Successfully')
+        
+        return redirect('/hm/di_panel/')
+
+    
+# def delete_disease(request, id):
+#     data = Sub_Disease.objects.get(id=id)
+#     if request.method == 'POST':
+        
+#             # data = get_object_or_404(Sub_Disease, id=id)
+#         data.delete()
+#         return redirect('/hm/di_panel/')
+#     else:
+#         return render(request, 'form/Disease/delete.html')
+        
     
          

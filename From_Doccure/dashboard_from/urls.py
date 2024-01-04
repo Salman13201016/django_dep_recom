@@ -16,5 +16,9 @@ urlpatterns = [
     
     path('di_panel/', disease.disease_panel,name='di_panel'),
     path('sub_store/', disease.disease_sub_store,name='sub_store'),
+    path('edit_disease/<int:id>', disease.edit_disease,name='edit_disease'),
+    path('edit_disease/update/', disease.update_disease,name='update_disease'),
+    path('edit_disease/delete/<int:id>', disease.delete_disease,name='delete_disease'),
+    
     
 ]

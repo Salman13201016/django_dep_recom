@@ -125,7 +125,117 @@
 							
 						</div>
 					</div>
-				
+          
+          <div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Symptom Information</h4>
+									
+								</div>
+								<div class="card-body">
+		
+									<div class="table-responsive">
+										<table class="datatable table table-stripped">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>Symptom1</th>
+													<th>Symptom2</th>
+													<th>Symptom3</th>
+													<th>Symptom4</th>
+													<th>Symptom5</th>
+													<th>Symptom6</th>
+													<th>Symptom7</th>
+													<th>Symptom8</th>
+													<th>Symptom9</th>
+													<th>Symptom10</th>
+													<th>Symptom11</th>
+													<th>Symptom12</th>
+													<th>Symptom13</th>
+													<th>Symptom14</th>
+													<th>Symptom15</th>
+													<th>Symptom16</th>
+													<th>Symptom17</th>
+													<th>Action</th>
+													
+												</tr>
+											</thead>
+											<tbody>
+												{% for table_data in data_symt %}
+												<tr class="table-info">
+												  <td>
+													{{ forloop.counter }}
+												  </td>
+												  <td>
+													{{table_data.symptom1}}
+												  </td>
+												  <td>
+													{{table_data.symptom2}}
+												  </td>
+												  <td>
+													{{table_data.symptom3}}
+												  </td>
+												  <td>
+													{{table_data.symptom4}}
+												  </td>
+												  <td>
+													{{table_data.symptom5}}
+												  </td>
+												  <td>
+													{{table_data.symptom6}}
+												  </td>
+												  <td>
+													{{table_data.symptom7}}
+												  </td>
+												  <td>
+													{{table_data.symptom8}}
+												  </td>
+												  <td>
+													{{table_data.symptom9}}
+												  </td>
+												  <td>
+													{{table_data.symptom10}}
+												  </td>
+												  <td>
+													{{table_data.symptom11}}
+												  </td>
+												  <td>
+													{{table_data.symptom12}}
+												  </td>
+												  <td>
+													{{table_data.symptom13}}
+												  </td>
+												  <td>
+													{{table_data.symptom14}}
+												  </td>
+												  <td>
+													{{table_data.symptom15}}
+												  </td>
+												  <td>
+													{{table_data.symptom16}}
+												  </td>
+												  <td>
+													{{table_data.symptom17}}
+												  </td>
+												  
+												  <td>
+													<a  href="{% url 'edit_symptom' table_data.id %}">Edit</a>
+													<a  href="{% url 'delete_symptom' table_data.id %}">Delete</a>  
+													
+													
+												  </td>
+												</tr>
+												{% endfor %}
+											  </tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>			
 			</div>
 			<!-- /Main Wrapper -->
