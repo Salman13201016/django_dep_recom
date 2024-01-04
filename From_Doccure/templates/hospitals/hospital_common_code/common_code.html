@@ -29,7 +29,7 @@
         <div class="mycontainer">
             <div class="main_body">
                 <!---------- Sidebar -------->
-                <div class="sidebar">
+                <div class="sidebar d-none d-lg-block">
                     <div class="sitebar_layer"></div>
                     <div class="sidebar_inner_main">
                         <div class="logo_div">
@@ -54,6 +54,39 @@
                                 <a href="#" class="nav-link_aside"><img src="{% static 'hospital_update_design/asset/images/Icons/IconSet.png' %}" alt=""> Doctor Profile</a>
                             </li> -->
                         </ul>
+                    </div>
+                </div>
+                <!----------- Mobile Sitebar ------------->
+<!----------- Mobile Sitebar ------------->
+                <div class="mobile_sitebar row d-lg-none">
+                    <div class="sitebar_layer"></div>
+                    <div class="">
+                        <div class="offcanvas offcanvas-start" id="myoffcanvas">
+                            <div class="logo_div offcanvas-header">
+                                <a href="index.html"><img src="./asset/images/logo/White-DigiVerse-Logo 1.png" alt=""></a>
+                                <button type="button" class="" data-bs-dismiss="offcanvas"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <ul class="offcanvas-body nav sidebar_inner mx-auto flex-column nav-pills mb-3" id="pills-tab" role="tablist">
+                                <!-- symtomp -->
+                                <li class="nav-item" role="presentation">
+                                    <a href="index.html" class="nav-link_aside active" ><img class="bg-white rounded-circle" src="./asset/images/Icons/IconSetMain.png" alt="">Symptoms</a>
+                                </li>
+                                <!-- Symtomp history -->
+                                <li class="nav-item" role="presentation">
+                                    <a href="symtomp_history.html" class="nav-link_aside"><img src="./asset/images/Icons/Vector.png" alt=""> Symptom History</a>
+                                </li>
+
+                                <!---------- Hospitals ------->
+                                <li class="nav-item" role="presentation">
+                                    <a href="hospital.html" class="nav-link_aside" ><img src="./asset/images/Icons/IconSet.png" alt="">Nearest Hospitals</a>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <a href="patient_profile.html" class="nav-link_aside"><img src="./asset/images/Icons/IconSet.png" alt="">Patient Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="offcanvas_toggle_btn" data-bs-target="#myoffcanvas" data-bs-toggle="offcanvas"><i class="fa-solid fa-bars"></i></button>
                     </div>
                 </div>
 
@@ -101,6 +134,8 @@
 
     <!------- Jquery cdn ------>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script> -->
 
 
     <!-------------- Custom js ------------>
@@ -108,7 +143,7 @@
     <script  src="{% static 'assets/js/predict.js' %}"></script>
     <script src="{% static 'hospital_update_design/asset/js/script.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    
     <script>
         if(localStorage.getItem('index')){
             index = localStorage.getItem('index')

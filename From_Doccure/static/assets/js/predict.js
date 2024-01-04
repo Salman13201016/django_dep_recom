@@ -46,15 +46,19 @@ $(document).ready(function () {
     //     });
     // }
 
+    // $('#select_22').on('change', function () {
+    //     $('.form_group2 select').prop('disabled', false).trigger('change.select2');
+    // });
+
+
     $('select').each(function (i) {
-        $('#select_22').select2({
-            theme: 'bootstrap4', // Use the Bootstrap 4 theme
-            width: '100%',       // Set the width of the select box
-        });
+        $('.chosen-select').chosen();
+
         t = $(this)
         cls = t.attr('class');
 
         $(t).change(function () {
+
 
 
             // var cls = cls[i + 2];
