@@ -71,9 +71,9 @@ def symptom_store(request):
     
 
 def edit_symptom(request, id):
-    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    data = get_object_or_404(Symptom, id=id)
     context={
-        'id':id,
+        'id':data,
     }
     return render(request,'form/Symptom/symptom_edit.html',context)
 

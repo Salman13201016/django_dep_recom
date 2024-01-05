@@ -72,9 +72,9 @@ def department_name_store(request):
         return render(request,'form/Department/form-basic-inputs.html')
     
 def edit_depart_name(request, id):
-    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    data = get_object_or_404(Doctor_Depert_name, id=id)
     context={
-        'id':id,
+        'id':data,
     }
     return render(request,'form/Department/edit.html',context)
 
@@ -139,9 +139,9 @@ def disease_sub_store(request):
         return redirect('/hm/di_panel/')
 
 def edit_disease(request, id):
-    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    data = get_object_or_404(Sub_Disease, id=id)
     context={
-        'id':id,
+        'id':data,
     }
     return render(request,'form/Disease/edit.html',context)
 
@@ -172,15 +172,7 @@ def delete_disease(request, id):
         return redirect('/hm/di_panel/')
 
     
-# def delete_disease(request, id):
-#     data = Sub_Disease.objects.get(id=id)
-#     if request.method == 'POST':
-        
-#             # data = get_object_or_404(Sub_Disease, id=id)
-#         data.delete()
-#         return redirect('/hm/di_panel/')
-#     else:
-#         return render(request, 'form/Disease/delete.html')
+
         
     
          

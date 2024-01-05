@@ -35,9 +35,9 @@ def hosp_map_store(request):
     
     
 def edit_hospital_map(request, id):
-    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    data = get_object_or_404(Hospital_map, id=id)
     context={
-        'id':id,
+        'id':data,
     }
     return render(request,'form/Hospital_map/hospital_map_edit.html',context)
 

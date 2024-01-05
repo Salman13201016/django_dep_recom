@@ -1,6 +1,6 @@
 {% extends 'common_code/base_code.html' %}
 {% load static %}
-{% block title %} District - Edit {% endblock title %}
+{% block title %} Division - Delete {% endblock title %}
 
 {% block content %}
 
@@ -16,7 +16,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit District Name Inputs</h4>
+                            <h4 class="card-title">Edit Hospital Details Inputs</h4>
                         </div>
                         <div class="container-scroller">
                             {% if messages %}
@@ -28,13 +28,13 @@
                                 {% endfor %}
                             </ul>
                             {% endif %}
-                            <form class="forms-sample" method="POST" action="{% url 'update_district' %}" enctype="multipart/form-data">
+                            <form class="forms-sample" method="POST" action="" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                <label for="exampleInputName1"><h5 >Edit District Name</h5></label>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="District name" name="district_name" value="{{ id.district }}">
-                                <input type="hidden" name="id" value="{{id}}">
+                                <p>Are you sure delete this name</p><b>{{ data.division }}</b>
                                 </div>
+                                <input type="hidden" name="id" value="{{ data.id }}">
+                                <a href="">Cansel</a>
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                             </form>
                             </div>

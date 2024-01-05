@@ -38,9 +38,9 @@ def station_store(request):
     
     
 def edit_station(request, id):
-    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    data = get_object_or_404(Station, id=id)
     context={
-        'id':id,
+        'id':data,
     }
     return render(request,'form/Station/station_edit.html',context)
 

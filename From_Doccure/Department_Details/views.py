@@ -34,9 +34,9 @@ def depart_det_store(request):
     
     
 def edit_department_details(request, id):
-    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    data = get_object_or_404(department_details, id=id)
     context={
-        'id':id,
+        'id':data,
     }
     return render(request,'form/Department_Details/depert_details_edit.html',context)
 

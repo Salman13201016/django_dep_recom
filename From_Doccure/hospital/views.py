@@ -45,9 +45,9 @@ def Hospital_Name_store(request):
         
         
 def edit_hospital(request, id):
-    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    data = get_object_or_404(hospital_categories, id=id)
     context={
-        'id':id,
+        'id':data,
     }
     return render(request,'form/Hospital/hospital_cat_edit.html',context)
 
