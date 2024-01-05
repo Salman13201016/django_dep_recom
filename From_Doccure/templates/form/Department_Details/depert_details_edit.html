@@ -32,8 +32,8 @@
 									  {% csrf_token %}
 									  <div class="form-group">
 										<label for="exampleInputName1"><h5 >Edit Department Details Name</h5></label>
-										<input type="text" class="form-control" id="exampleInputName1" placeholder="Put" name="put" value="{{id.put}}">
-										<input type="text" class="form-control" id="exampleInputName1" placeholder="Description" name="descrip" value="{{id.text}}">
+										<input type="text" class="form-control" id="exampleInputName1" placeholder="Put" name="put" value="{{data.put}}">
+										<input type="text" class="form-control" id="exampleInputName1" placeholder="Description" name="descrip" value="{{data.text}}">
                                         <input type="hidden" name="id" value="{{id}}">
 									  </div>
 									  <button type="submit" class="btn btn-primary me-2">Submit</button>

@@ -32,7 +32,7 @@
                                 {% csrf_token %}
                                 <div class="form-group">
                                 <label for="exampleInputName1"><h5 >Edit District Name</h5></label>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="District name" name="district_name" value="{{ id.district }}">
+                                <input type="text" class="form-control" id="exampleInputName1" placeholder="District name" name="district_name" value="{{ data.district }}">
                                 <input type="hidden" name="id" value="{{id}}">
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>

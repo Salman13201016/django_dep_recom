@@ -66,7 +66,8 @@ def address_store(request):
 def edit_hospital_address(request, id):
     data = get_object_or_404(address_name, id=id)
     context={
-        'id':data,
+        'id':id,
+        'data':data,
     }
     return render(request,'form/Address/hospital_address_edit.html',context)
 

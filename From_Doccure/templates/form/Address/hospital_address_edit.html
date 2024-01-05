@@ -32,9 +32,9 @@
                                 {% csrf_token %}
                                 <div class="form-group">
                                 <label for="exampleInputName1"><h5 >Edit Hospital Details</h5></label>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Hospital Name" name="hos_name" value="{{id.hos_name}}"> <br>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Zip_Code" name="zip_code" value="{{id.zip_code}}"> <br>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Hospital Address" name="address" value="{{id.address}}"> <br>
+                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Hospital Name" name="hos_name" value="{{data.hos_name}}"> <br>
+                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Zip_Code" name="zip_code" value="{{data.zip_code}}"> <br>
+                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Hospital Address" name="address" value="{{data.address}}"> <br>
                                 <input type="file" class="form-control" id="exampleInputName1" placeholder="Hospital Image" name="image"> <br>
                                 {% comment %} <input type="text" class="form-control" id="exampleInputName1" placeholder="Description" name="description"> <br> {% endcomment %}
                                 <div class="form-group row">

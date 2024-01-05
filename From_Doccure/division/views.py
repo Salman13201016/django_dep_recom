@@ -37,7 +37,9 @@ def Division_Name_store(request):
 def edit_division(request, id):
     data = get_object_or_404(Division_Name, id=id)
     context={
-        'id':data,
+        'id':id,
+        'data':data,
+        
     }
     return render(request,'form/Division/division_edit.html',context)
 
