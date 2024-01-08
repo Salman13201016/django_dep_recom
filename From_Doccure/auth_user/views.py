@@ -220,6 +220,8 @@ def Privacy_policy(request):
 
 def forgot_pass(request):
     return render(request,'update_design/forgotpass.html')
+def about_pass(request):
+    return render(request,'hospitals/hospital_all_code/about.html')
 
 
    
