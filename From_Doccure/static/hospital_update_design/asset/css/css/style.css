@@ -4,6 +4,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 li{
     list-style: none;
 }
@@ -365,6 +366,8 @@ img{
 .top_right_filter .filter_img{
     padding: 0 .3rem;
 }
+
+
 .hospital_top_right .top_right_search button{
     border: 1px solid var(--blue);
     background: var(--blue);
