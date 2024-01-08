@@ -32,8 +32,8 @@
                                 {% csrf_token %}
                                 <div class="form-group">
                                 <label for="exampleInputName1"><h5 >Edit Hospital_Map Name</h5></label>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Longitude" name="longitude">
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Latitude" name="latitude">
+                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Longitude" name="longitude" value="{{data.longitude}}">
+                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Latitude" name="latitude" value="{{data.latitude}}">
                                 <input type="hidden" name="id" value="{{id}}">
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>

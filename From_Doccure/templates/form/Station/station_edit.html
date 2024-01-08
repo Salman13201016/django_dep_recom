@@ -32,7 +32,7 @@
                                 {% csrf_token %}
                                 <div class="form-group">
                                 <label for="exampleInputName1"><h5 >Edit Station Name</h5></label>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Station name" name="station_name">
+                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Station name" name="station_name" value="{{ data.station }}">
                                 <input type="hidden" name="id" value="{{id}}">
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>

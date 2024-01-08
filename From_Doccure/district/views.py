@@ -35,9 +35,10 @@ def district_name_store(request):
     
     
 def edit_district(request, id):
-    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    data = get_object_or_404(District_Name, id=id)
     context={
         'id':id,
+        'data':data,
     }
     return render(request,'form/District/district_edit.html',context)
 
