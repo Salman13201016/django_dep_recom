@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+
+
+
     var itemsPerPage = 10;
     var currentPage = 1;
 
@@ -15,7 +19,7 @@ $(document).ready(function () {
             console.log(`Image: ${hospital.image}`);
             console.log(`Latitude: ${hospital.lat}`);
             console.log(`Longitude: ${hospital.long}`);
-            console.log(`Distance: ${hospital.distance} km`);
+            console.log(`Distance: ${hospital.distance.toFixed(3)} km`);
             console.log("------");
             div_str = `<li class="h_list_single"><div class="h_single_content">
             <div class="h_photo_data">
@@ -30,11 +34,13 @@ $(document).ready(function () {
                         <!-- <p class="h_location_country">{{ hospital.zip_code }}, Bangladesh</p> -->
                     </div>
                     <div class="h_doctor_div">
+                    <input type="hidden" class="lat"  value="`+ hospital.lat + `">
+                    <input type="hidden" class="long"  value=`+ hospital.long + `>
                         <p class="h_doctors">
                             <img src="./asset/images/Icons/healthicons_doctor-male.png" alt="">
                             <!-- doctor count -->
                             <span class="h_doctor_count">Distance: </span>
-                                <span class="h_doctor_count">`+ hospital.distance + ` KM</span>
+                                <span class="h_doctor_count">`+ hospital.distance.toFixed(3) + ` KM</span>
                         </p>
                         
                     </div>
@@ -50,12 +56,14 @@ $(document).ready(function () {
 
         </div>
         <div class="h_single_btn">
-            <a class="btn_blue" href="`+ hospital.description + `" target="_blank">View Hospital</a>
+            <a class="btn_blue btn btn-primary viewHospitalLink" href="#" data-toggle="modal" data-target="#mapModal " data-lat="${hospital.lat}" data-long="${hospital.long}" >View Hospital</a>
         </div></li>`
             $('.h_list_ul').append(div_str)
         });
 
     }
+
+
     function renderHospitals2(response) {
         $('.h_list_ul').empty()
         var startIndex = (currentPage - 1) * itemsPerPage;
@@ -87,7 +95,7 @@ $(document).ready(function () {
                             <img src="./asset/images/Icons/healthicons_doctor-male.png" alt="">
                             <!-- doctor count 
                             <span class="h_doctor_count">Distance: </span>
-                                <span class="h_doctor_count">`+ hospital.distance + ` KM</span>-->
+                                <span class="h_doctor_count">`+ hospital.distance.toFixed(3) + ` KM</span>-->
                         </p>
                         
                     </div>
@@ -103,7 +111,7 @@ $(document).ready(function () {
 
         </div>
         <div class="h_single_btn">
-            <a class="btn_blue" href="`+ hospital.description + `" target="_blank">View Hospital</a>
+            <a class="btn_blue" href="`+ hospital.description + `" target="_blank" >View Hospital</a>
         </div></li>`
             $('.h_list_ul').append(div_str)
         });
