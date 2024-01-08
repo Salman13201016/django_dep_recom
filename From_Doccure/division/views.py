@@ -35,9 +35,11 @@ def Division_Name_store(request):
         
         
 def edit_division(request, id):
-    # data = get_object_or_404(Doctor_Depert_name, id=id)
+    data = get_object_or_404(Division_Name, id=id)
     context={
         'id':id,
+        'data':data,
+        
     }
     return render(request,'form/Division/division_edit.html',context)
 
@@ -59,7 +61,37 @@ def delete_division(request, id):
         data = get_object_or_404(Division_Name, id=id)
         data.delete()
         messages.success(request, 'The Division name hase been deleted Successfully')
-        return redirect('/division/') 
+        return redirect('/division/')
+     
     except (IntegrityError) as e: 
             messages.error(request, 'The Hospital_map name hase been deleted Successfully')   
-        
+ 
+ 
+# delete view for details
+
+# def delete_division(request, id):
+  
+ 
+
+#     # fetch the object related to passed id
+
+#     obj = get_object_or_404(Division_Name, id = id)
+ 
+#     context ={
+#         'data':obj
+#     }
+
+#     if request.method =="POST":
+
+#         # delete object
+
+#         obj.delete()
+
+#         # after deleting redirect to 
+
+#         # home page
+
+#         return HttpResponseRedirect("/")
+ 
+
+#     return render(request,'form/Division/delete.html',context)       
