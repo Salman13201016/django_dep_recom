@@ -10,9 +10,13 @@ from django.core.signing import Signer, BadSignature
 from django.core.mail import send_mail
 from django.utils.html import format_html
 from . models import user_register
+from django.urls import reverse
 
-
-
+def reg_gmail(request):
+    url = reverse('social:begin', args=['google-oauth2'])
+    if 'social_auth_google-oauth2' in request.session:
+        del request.session['social_auth_google-oauth2']
+    return redirect(url)
 def user_index_panel(request):
 
     all_data = user_register.objects.all().order_by('pk')#this is acsending form align items #this is decending form order_py('-pk') 
@@ -88,7 +92,7 @@ def signup_auth_panel(request):
               v_key, link = email_generator(fname)
               
               # this is create method it's fast
-              user_register.objects.create(fname=fname,email=email,mobile=mobile,identy_no=identy_no,password=password,v_key=v_key,v_status=0 )
+              user_register.objects.create(fname=fname,email=email,mobile=mobile,identy_no=identy_no,password=password,v_key=v_key,v_status=0)
               send_mail(f"Hello Mr. {fname} Please confirm your Registration in Doc.com",link,'maniruzzaman.manir96@gmail.com',[email],html_message=link)
                # this is save method 
             # user_model = user_register()
