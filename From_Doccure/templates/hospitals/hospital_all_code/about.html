@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digiverse</title>
+
+    <!-------- Fontwesome CDN --------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!------- Google Fonts -------->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!------------ Bootstrap css ------------>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!---------- custom css ------------>
+    <link rel="stylesheet" href="{% static 'about/css/style.css' %}">
+</head>
+<body>
+
+    <div class="bg_dark_pryvacy"></div>
+    <div class="bgdurkabout"></div>
+    <!--------- header section ---------->
+    <section class="header">
+        <div class="header_main">
+            <div class="header_logo">
+                <a href="{% url 'symptom' %}"><img src="{% static 'about/img/logo/White-DigiVerse-Logo.png' %}" alt=""></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-----About Body section ------>
+    <section class="about_section">
+        <!-- <div class="container">
+            <div class="about_main">
+                <div class="about_inner">
+                    <div class="about_row1 about_row">
+                        <div class="about_row1_left about_row_left">
+                            <h2 class="about_title">ABOUT US</h2>
+                            <p class="about_paragraph">
+                                Digiverse Healthcare Limited stands at the vanguard of AI-based healthcare, redefining the industry landscape with an unwavering focus on data security. Our pioneering platform delivers comprehensive services, facilitating seamless online appointments and serving as a singular destination for a wide spectrum of healthcare requirements.
+                            </p>
+                        </div>
+                        <div class="about_row1_right about_row_right">
+                            <img src="{% static 'about/img/about/drMain.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="about_row2 about_row">
+                        <div class="about_row2_left about_row_left">
+                            <img src="{% static 'about/img/about/mission.jpg' %}" alt="">
+                        </div>
+                        <div class="about_row2_right about_row_right">
+                            <h2 class="about_title">MISSION</h2>
+                            <p class="about_paragraph">Provide accessible, personalized, and secure healthcare services.</p>
+                        </div>
+                    </div>
+                    <div class="about_row3 about_row">
+                        <div class="about_row3_left about_row_left">
+                            <h2 class="about_title">VISION</h2>
+                            <p class="about_paragraph">
+                                Redefine healthcare through seamless AI and technology integration.
+                            </p>
+                        </div>
+                        <div class="about_row3_right about_row_right">
+                            <img src="{% static 'about/img/about/vision.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="about_row4 about_row">
+                        <div class="about_row4_left about_row_left">
+                            <img src="{% static 'about/img/about/leaderahip.jpg' %}" alt="">
+                        </div>
+                        <div class="about_row4_right about_row_right">
+                            <h2 class="about_title">LEADERSHIP</h2>
+                            <p class="about_paragraph">
+                                As industry leaders, continually pioneer AI-driven innovations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="about_row5 about_row">
+                        <div class="about_row5_left about_row_left">
+                            <h2 class="about_title">GOAL</h2>
+                            <p class="about_paragraph">Foster a healthier world with universally available, high-quality, and personalized healthcare.</p>
+                        </div>
+                        <div class="about_row5_right about_row_right">
+                            <img src="{% static 'about/img/about/goal.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="about_main">
+            
+            <div class="about_full_width">
+                <div class="about_full_width_inner">
+                    <div class="about_full_content">
+                        <h2 class="about_title">About Us</h2>
+                        <p class="about_paragraph">Founded in 2022, Digiverse Healthcare Limited began its journey, prioritizing comprehensive AI-driven healthcare services and robust data security. We stand at the vanguard of AI-based healthcare, redefining the industry landscape with an unwavering focus on data security. Our pioneering platform delivers comprehensive services, facilitating seamless online appointments and serving as a singular destination for a wide spectrum of healthcare requirements. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="about_dabble_section">
+                <!-- Dubble_column_single_row -->
+                <div class="adout_dubble_row">
+                    <div class="about_left_div vission">
+                        <div class="about_left_relative vission">
+                            <div class="about_left_inner">
+                                <h2 class="about_title">4TH INDUSTRIAL REVOLUTION(IR) SMART BANGLADESH: GOVERNMENT INITIATIVES AND DIGIVERSE  </h2>
+                                <ul class="about_para_list">
+                                    <li><p class="about_paragraph">Embracing the 4th Industrial Revolution (4th IR) involves integrating health tech.</p></li>
+                                    <li><p class="about_paragraph">Digiverse secured NOC and ethical clearance from BMRC, Ministry of Health, furthering its health tech-based initiatives.</p></li>
+                                </ul>
+                                <a class="ms-4" href="https://bmrcbd.org/">https://bmrcbd.org/</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about_right_div mission">
+                        <div class="about_right_relative">
+                            <div class="about_right_inner">
+                                <h2 class="about_title">AI IN HEALTH SECTOR AND WHAT CONTRIBUTION MAY DIGIVERSE BRING</h2>
+                                <ul class="about_para_list">
+                                    <li><p class="about_paragraph">Enhanced Diagnosis: AI aids in accurate and faster diagnoses, potentially saving lives.</p></li>
+                                    <li><p class="about_paragraph">Personalized Treatment: Tailored treatments based on AI analysis improve patient outcomes.</p></li>
+                                    <li><p class="about_paragraph">Efficiency & Accessibility: Streamlined operations and remote healthcare services benefit communities, especially underserved areas.</p></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dubble_column_single_row -->
+                <!-- <div class="adout_dubble_row">
+                    <div class="about_left_div leadership">
+                        <div class="about_left_relative">
+                            <div class="about_left_inner">
+                                <h2 class="about_title">LEADERSHIP</h2>
+                                <p class="about_paragraph">As industry leaders, continually pioneer AI-driven innovations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about_right_div goal">
+                        <div class="about_right_relative">
+                            <div class="about_right_inner">
+                                <h2 class="about_title">GOAL</h2>
+                                <p class="about_paragraph">Foster a healthier world with universally available, high-quality, and personalized healthcare.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Dubble_column_single_row -->
+                <div class="adout_dubble_row">
+                    <div class="about_left_div value">
+                        <div class="about_left_relative">
+                            <div class="about_left_inner">
+                                <h2 class="about_title">OUR VALUES</h2>
+                                <p class="about_paragraph">Our foundation is built upon a steadfast   commitment to our core values with Technology | Innovation | Privacy | Patient Satisfaction | Win Together.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about_right_div privacy">
+                        <div class="about_right_relative">
+                            <div class="about_right_inner">
+                                <h2 class="about_title">PRIVACY</h2>
+                                <p class="about_paragraph">Ensuring top-tier privacy, our healthcare system maintains robust data security measures.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dubble_column_single_row -->
+                <div class="adout_dubble_row">
+                    <div class="about_left_div tech">
+                        <div class="about_left_relative">
+                            <div class="about_left_inner">
+                                <h2 class="about_title">TECHNOLOGY</h2>
+                                <p class="about_paragraph">We pioneer healthcare with cutting-edge AI technology for an efficient patient experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about_right_div patient">
+                        <div class="about_right_relative">
+                            <div class="about_right_inner">
+                                <h2 class="about_title">PATIENT SATISFACTION</h2>
+                                <p class="about_paragraph">Consistently excelling, we exceed patient expectations with a seamless, personalized healthcare experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dubble_column_single_row -->
+                <div class="adout_dubble_row">
+                    <div class="about_left_div innovation">
+                        <div class="about_left_relative">
+                            <div class="about_left_inner">
+                                <h2 class="about_title">INNOVATION</h2>
+                                <p class="about_paragraph">A beacon of healthcare innovation, redefining patient care standards with groundbreaking technologies.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about_right_div win">
+                        <div class="about_right_relative">
+                            <div class="about_right_inner">
+                                <h2 class="about_title">WIN TOGETHER</h2>
+                                <p class="about_paragraph">United in collaboration and synergy, we win together to achieve optimal healthcare outcomes for all.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about_full_width">
+                <div class="about_full_width_inner">
+                    <div class="about_full_content">
+                        <h2 class="about_title">OUR SERVICES</h2>
+                        <p class="about_paragraph">Digiverse has commenced telemedicine services, laying the foundation for more expansive healthcare offerings. We’re planning to include expanding telemedicine services and implementing advanced healthcare solutions.</p>
+                        <div class="about_sub_title_list my-5">
+                            <h5 class="about_sub_title">-	AI Health Assistant</h5>
+                            <h5 class="about_sub_title">-	Diagnosis</h5>
+                            <h5 class="about_sub_title">-	Doctor's Appointments</h5>
+                            <h5 class="about_sub_title">-	Health Insurance</h5>
+                            <h5 class="about_sub_title">-	Telemedicine</h5>
+                            <h5 class="about_sub_title">-	Medical Accessories</h5>
+                        </div>
+                        <p class="about_para_2">EXPLORE DIGIVERSE ADVANCEMENTS AND INITIATIVES BY FOLLOWING THIS <a href="digiverse.com.bd"> [DIGIVERSE WEBSITE LINK]</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!----------- Footer section ---------------->
+    <section class="footer privacy_footer">
+        <div class="container">
+            <div class="footer_main ">
+                <div class="copyrights">
+                    <p class="copy_content">All Rights Reserved By <a href="{% url 'about' %}">Digiverse</a></p>
+                </div>
+                <div class="login_privacy">
+                    <a href="{% url 'term' %}">Terms of use</a>
+                    <a href="{% url 'privacy' %}">Privacy policy</a>
+                </div>
+                <div class="login_social">
+                    <div class="social">
+                        <div class="social_inner">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+   <!----------- Bootstrap js --------------->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--------- Jquery cdn by Google ----------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!------------ Custom js ------------>
+    <script src="{% static 'about/js/script.js' %}"></script>
+</body>
+</html>

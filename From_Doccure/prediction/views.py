@@ -49,6 +49,7 @@ def hospitals_symptom_page(request):
         return render(request,'hospitals/hospital_all_code/symptom_page.html',context)
     else:
         return redirect('aut_login')
+    
 def hospitals_symptom_history(request):
     google_data = request.session.get('social_auth_google-oauth2')
     
