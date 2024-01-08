@@ -21,6 +21,7 @@ urlpatterns = [
     path("email_verification/<str:id>", a_user.email_verify,name='email_verify'),
     
     path('forgotpass/', a_user.forgot_pass,name='forgotpass'),
+    path('about/', a_user.about_pass,name='about'),
     
     
     
