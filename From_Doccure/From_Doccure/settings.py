@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'Hospital_Department',
     'social_django',
     'auth_user',
+    'role',
+    'user_role',
    
     
 ]
