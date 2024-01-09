@@ -111,7 +111,7 @@ $(document).ready(function () {
 
         </div>
         <div class="h_single_btn">
-            <a class="btn_blue" href="`+ hospital.description + `" target="_blank" >View Hospital</a>
+            <a class="btn_blue btn btn-primary viewHospitalLink" href="#" data-toggle="modal" data-target="#mapModal " data-lat="${hospital.lat}" data-long="${hospital.long}" >View Hospital</a>
         </div></li>`
             $('.h_list_ul').append(div_str)
         });
