@@ -30,7 +30,7 @@ urlpatterns = [
     path('hospital/',include('hospital.urls')),
     path('address/',include('address.urls')),
     path('role/',include('role.urls')),
-    # path('user_role/',include('user_role.urls')),
+    path('user_role/',include('user_role.urls')),
     path('hospital_map/',include('hospital_map.urls')),
     path('depart_details/',include('Department_Details.urls')),
     path('hos_depart/',include('Hospital_Department.urls')),

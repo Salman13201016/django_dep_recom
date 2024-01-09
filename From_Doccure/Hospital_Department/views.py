@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from Hospital_Department.models import hospital_department
 from dashboard_from.models import Doctor_Depert_name
 from hospital.models import hospital_categories
@@ -35,3 +35,15 @@ def hospital_depart_store(request):
     except (IntegrityError) as e: 
         messages.error(request, 'The Hospital Department name hase been inserted Successfully')   
         return render(request,'form/Hospital_Department/hospital_department.html')
+
+
+def hospital_details_delete(request, id):
+    try:
+        data = get_object_or_404(hospital_department, id=id)
+        data.delete()
+        messages.success(request, 'The Hospital Department name hase been deleted Successfully')
+        return redirect('/hos_depart/')
+    except (IntegrityError) as e: 
+        messages.error(request, 'The Hospital Department name hase been deleted Successfully')
+        
+        

@@ -6,5 +6,6 @@ from . import views as hos_depart
 urlpatterns = [  
     path('', hos_depart.hospital_depart_panel,name='hospital_depart'),
     path('dep_det_store/', hos_depart.hospital_depart_store,name='hospital_depart_store'),
+    path('hospital/delete/<int:id>', hos_depart.hospital_details_delete,name='hospital_details_delete'),
     
 ]

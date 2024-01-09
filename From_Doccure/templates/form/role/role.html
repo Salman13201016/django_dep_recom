@@ -28,7 +28,7 @@
 										{% endfor %}
 									</ul>
 									{% endif %}
-									<form class="forms-sample" method="POST" action="{% url 'role_stor' %}" enctype="multipart/form-data">
+									<form class="forms-sample" method="POST" action="{% url 'role_store' %}" enctype="multipart/form-data">
 									  {% csrf_token %}
 									  <div class="form-group">
 										<label for="exampleInputName1"><h5 >Patient/Admin Name</h5></label>
@@ -76,7 +76,7 @@
 											  
 											  <td>
 												<a  href="{% url 'edit_role' table_data.id %}">Edit</a>
-												<a  href="{% url 'delete_depart' table_data.id %}">Delete</a>
+												<a  href="{% url 'delete_role' table_data.id %}">Delete</a>
 												
 												
 											  </td>
